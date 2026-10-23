@@ -13,7 +13,7 @@
   <meta property="og:type" content="website">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/logo.svg') }}">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -86,7 +86,7 @@
   <header class="site-header">
     <div class="container nav-container">
       <a href="{{ url_for('main.index') }}" class="brand-wrapper" aria-label="Sanskar Public School Home">
-        <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Sanskar Public School Emblem" class="brand-logo-img">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Sanskar Public School Emblem" class="brand-logo-img">
         <div class="brand-text">
           <span class="school-title">{{ school_name }}</span>
           <span class="school-sanskrit-motto">{{ school_motto }}</span>
@@ -151,7 +151,7 @@
         <!-- Col 1: School Emblem & Motto -->
         <div class="footer-col">
           <div class="footer-brand-logo">
-            <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Sanskar Public School Logo">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Sanskar Public School Logo">
             <div>
               <div class="footer-brand-title">{{ school_name }}</div>
               <div class="footer-brand-motto">{{ school_motto }}</div>
