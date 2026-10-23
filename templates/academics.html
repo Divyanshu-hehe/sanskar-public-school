@@ -19,7 +19,7 @@
 </div>
 
 <!-- Academic Architecture Overview -->
-<section style="padding: 70px 0; background: var(--white);">
+<section class="page-section" style="background: var(--white);">
   <div class="container">
     <div class="section-header">
       <span class="section-tag"><i class="fas fa-book-open"></i> Pedagogical Framework</span>
@@ -30,7 +30,7 @@
     </div>
 
     <!-- 1. Pre-Primary Wing -->
-    <div id="pre-primary" style="display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center;margin-bottom:70px;background:var(--cream);padding:36px;border-radius:var(--radius-lg);border:1px solid var(--border-light);">
+    <div id="pre-primary" class="academic-wing-card" style="background:var(--cream);">
       <div style="border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);">
         <img src="{{ url_for('static', filename='images/academic/pre_primary.jpg') }}" alt="Pre-Primary wing at Sanskar Public School">
       </div>
@@ -42,7 +42,7 @@
         <p style="color:var(--text-muted);line-height:1.7;margin-bottom:16px;">
           The early formative years are filled with wonder and joy. Our pre-primary environment leverages Montessori-inspired discovery, phonics immersion, sensory stimulation, and guided play to develop motor dexterity and social-emotional confidence.
         </p>
-        <ul style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:0.9rem;color:var(--text-dark);font-weight:600;">
+        <ul class="academic-sublist">
           <li><i class="fas fa-check-circle" style="color:var(--primary-green);"></i> Phonics & Storytelling</li>
           <li><i class="fas fa-check-circle" style="color:var(--primary-green);"></i> Sensory & Sand Play</li>
           <li><i class="fas fa-check-circle" style="color:var(--primary-green);"></i> Music, Rhythm & Movement</li>
@@ -52,7 +52,7 @@
     </div>
 
     <!-- 2. Primary Wing -->
-    <div id="primary" style="display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;margin-bottom:70px;background:var(--white);padding:36px;border-radius:var(--radius-lg);border:1px solid var(--border-light);box-shadow:var(--shadow-sm);">
+    <div id="primary" class="academic-wing-card reverse" style="background:var(--white);box-shadow:var(--shadow-sm);">
       <div>
         <div style="display:inline-flex;align-items:center;gap:8px;background:var(--primary-surface);color:var(--primary-green);font-weight:700;padding:4px 14px;border-radius:var(--radius-full);font-size:0.8rem;margin-bottom:12px;">
           Classes I – V
@@ -61,7 +61,7 @@
         <p style="color:var(--text-muted);line-height:1.7;margin-bottom:16px;">
           Building strong literacy, computational numeracy, and scientific curiosity. Children learn through collaborative group tasks, environmental explorations, and expressive bilingual reading.
         </p>
-        <ul style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:0.9rem;color:var(--text-dark);font-weight:600;">
+        <ul class="academic-sublist">
           <li><i class="fas fa-check-circle" style="color:var(--primary-green);"></i> English & Hindi Literature</li>
           <li><i class="fas fa-check-circle" style="color:var(--primary-green);"></i> Mathematics Lab Concepts</li>
           <li><i class="fas fa-check-circle" style="color:var(--primary-green);"></i> Environmental Science (EVS)</li>
@@ -74,7 +74,7 @@
     </div>
 
     <!-- 3. Middle School Wing -->
-    <div id="middle" style="display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center;margin-bottom:70px;background:var(--cream);padding:36px;border-radius:var(--radius-lg);border:1px solid var(--border-light);">
+    <div id="middle" class="academic-wing-card" style="background:var(--cream);">
       <div style="border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);">
         <img src="{{ url_for('static', filename='images/academic/middle_school.jpg') }}" alt="Middle School classroom at Sanskar">
       </div>
@@ -86,7 +86,7 @@
         <p style="color:var(--text-muted);line-height:1.7;margin-bottom:16px;">
           Transitioning toward specialized disciplines. Emphasis on laboratory experimentation in Physics, Chemistry, and Biology, along with third-language options (Sanskrit/French) and introduction to computational logic and coding.
         </p>
-        <ul style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:0.9rem;color:var(--text-dark);font-weight:600;">
+        <ul class="academic-sublist">
           <li><i class="fas fa-check-circle" style="color:var(--primary-green);"></i> Integrated Science Laboratories</li>
           <li><i class="fas fa-check-circle" style="color:var(--primary-green);"></i> Coding & Robotics Fundamentals</li>
           <li><i class="fas fa-check-circle" style="color:var(--primary-green);"></i> Social Sciences & Global Geography</li>
@@ -96,7 +96,7 @@
     </div>
 
     <!-- 4. Senior Secondary Wing -->
-    <div id="senior" style="display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;background:var(--white);padding:36px;border-radius:var(--radius-lg);border:1px solid var(--border-light);box-shadow:var(--shadow-sm);">
+    <div id="senior" class="academic-wing-card reverse" style="background:var(--white);box-shadow:var(--shadow-sm);">
       <div>
         <div style="display:inline-flex;align-items:center;gap:8px;background:#E0F2F1;color:#00796B;font-weight:700;padding:4px 14px;border-radius:var(--radius-full);font-size:0.8rem;margin-bottom:12px;">
           Classes IX – XII (CBSE Board)
@@ -119,14 +119,14 @@
 </section>
 
 <!-- Teaching Methodology & Assessments -->
-<section style="padding: 70px 0; background: var(--cream);">
+<section class="page-section" style="background: var(--cream);">
   <div class="container">
     <div class="section-header">
       <span class="section-tag"><i class="fas fa-lightbulb"></i> Pedagogical Innovations</span>
       <h2 class="section-title">Teaching Methodology & Continuous Evaluation</h2>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:28px;">
+    <div class="responsive-grid-3">
       <div style="background:var(--white);padding:30px;border-radius:var(--radius-md);border:1px solid var(--border-light);">
         <div style="font-size:1.6rem;color:var(--primary-green);margin-bottom:12px;"><i class="fas fa-laptop-code"></i></div>
         <h4 style="font-size:1.2rem;font-weight:800;color:var(--primary-dark);margin-bottom:10px;">Smart Digital Classrooms</h4>

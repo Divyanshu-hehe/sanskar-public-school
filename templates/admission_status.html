@@ -20,15 +20,15 @@
   </div>
 </div>
 
-<section style="padding: 70px 0; background: var(--cream);">
+<section class="page-section" style="background: var(--cream);">
   <div class="container" style="max-width: 760px;">
     <!-- Lookup Form -->
-    <div style="background:var(--white);padding:36px;border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:1px solid var(--border-light);margin-bottom:36px;">
+    <div style="background:var(--white);padding:clamp(20px, 4vw, 36px);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:1px solid var(--border-light);margin-bottom:36px;">
       <h3 style="font-size:1.3rem;font-weight:700;color:var(--primary-dark);margin-bottom:16px;">
         <i class="fas fa-search" style="color:var(--gold);"></i> Search Application by Reference Number
       </h3>
       <form method="GET" action="{{ url_for('main.admission_status') }}" style="display:flex;gap:12px;flex-wrap:wrap;">
-        <input type="text" name="app_num" value="{{ searched_app_num }}" class="form-control" style="flex:1;min-width:240px;" placeholder="e.g. SPS-2026-1001" required>
+        <input type="text" name="app_num" value="{{ searched_app_num }}" class="form-control" style="flex:1;min-width:220px;" placeholder="e.g. SPS-2026-1001" required>
         <button type="submit" class="btn btn-primary" style="padding:12px 24px;">
           <span>Check Status</span>
           <i class="fas fa-arrow-right"></i>
@@ -41,11 +41,11 @@
 
     <!-- Application Status Result Card -->
     {% if application %}
-    <div style="background:var(--white);padding:36px;border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:2px solid var(--primary-green);animation:fadeIn 0.3s ease;">
+    <div style="background:var(--white);padding:clamp(20px, 4vw, 36px);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:2px solid var(--primary-green);animation:fadeIn 0.3s ease;">
       <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border-light);padding-bottom:18px;margin-bottom:20px;flex-wrap:wrap;gap:12px;">
         <div>
           <span style="font-size:0.8rem;font-weight:700;color:var(--text-light);text-transform:uppercase;">Application Reference</span>
-          <h2 style="font-size:1.8rem;font-weight:800;color:var(--primary-dark);font-family:monospace;">{{ application.application_number }}</h2>
+          <h2 style="font-size:clamp(1.3rem, 3vw, 1.8rem);font-weight:800;color:var(--primary-dark);font-family:monospace;">{{ application.application_number }}</h2>
         </div>
         <div>
           {% if application.status == 'Approved' %}
@@ -68,7 +68,7 @@
         </div>
       </div>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;font-size:0.95rem;margin-bottom:24px;">
+      <div class="status-details-grid">
         <div><strong>Student Name:</strong> {{ application.student_name }}</div>
         <div><strong>Class Applied:</strong> {{ application.grade_applying }}</div>
         <div><strong>Parent / Guardian:</strong> {{ application.parent_name }} ({{ application.relationship }})</div>

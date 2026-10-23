@@ -253,10 +253,13 @@
 
 .admin-table-container {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
 }
 
 .admin-table {
   width: 100%;
+  min-width: 650px;
   border-collapse: collapse;
   text-align: left;
   font-size: 0.9rem;
@@ -268,6 +271,7 @@
   font-weight: 700;
   color: var(--text-dark);
   border-bottom: 1px solid #E5EBE8;
+  white-space: nowrap;
 }
 
 .admin-table td {
@@ -341,6 +345,9 @@
   .admin-brand-info, .admin-nav-item span, .admin-user-info {
     display: none;
   }
+  .admin-body {
+    padding: 24px 20px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -348,6 +355,12 @@
     grid-template-columns: 1fr;
   }
   .admin-body {
-    padding: 16px;
+    padding: 14px;
+  }
+  .admin-filters-bar {
+    padding: 14px 16px;
+  }
+  .admin-filters-bar form {
+    width: 100%;
   }
 }

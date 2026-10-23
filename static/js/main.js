@@ -10,11 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const backdrop = document.querySelector('.nav-menu-backdrop');
 
   if (menuToggle && navMenu) {
-    menuToggle.addEventListener('click', () => {
+    const openMenu = () => {
       navMenu.classList.add('open');
       if (backdrop) backdrop.classList.add('active');
       document.body.style.overflow = 'hidden';
-    });
+    };
 
     const closeMenu = () => {
       navMenu.classList.remove('open');
@@ -22,8 +22,28 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.style.overflow = '';
     };
 
+    menuToggle.addEventListener('click', openMenu);
     if (closeBtn) closeBtn.addEventListener('click', closeMenu);
     if (backdrop) backdrop.addEventListener('click', closeMenu);
+
+    // Close drawer when clicking any nav link
+    navMenu.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+        closeMenu();
+      }
+    });
+
+    // Reset on desktop resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 992 && navMenu.classList.contains('open')) {
+        closeMenu();
+      }
+    });
   }
 
   // 2. Sticky Header Effect

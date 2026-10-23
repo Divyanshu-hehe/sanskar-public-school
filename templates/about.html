@@ -19,9 +19,9 @@
 </div>
 
 <!-- Introduction Section -->
-<section style="padding: 80px 0; background: var(--white);">
+<section class="page-section" style="background: var(--white);">
   <div class="container">
-    <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;">
+    <div class="responsive-split" style="align-items:center;">
       <div>
         <span class="section-tag"><i class="fas fa-landmark"></i> Our Heritage & Foundation</span>
         <h2 class="section-title" style="text-align:left;">Rooted in Values, Aiming for Global Excellence</h2>
@@ -46,7 +46,7 @@
 </section>
 
 <!-- Vision & Mission Cards -->
-<section style="padding: 80px 0; background: var(--cream);">
+<section class="page-section" style="background: var(--cream);">
   <div class="container">
     <div class="section-header">
       <span class="section-tag"><i class="fas fa-bullseye"></i> Guiding Principles</span>
@@ -54,7 +54,7 @@
       <p class="section-desc">The enduring bedrock upon which all teaching, mentoring, and student life at Sanskar is nurtured.</p>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:28px;">
+    <div class="responsive-grid-3">
       <!-- Card 1: Vision -->
       <div style="background:var(--white);padding:36px 28px;border-radius:var(--radius-md);box-shadow:var(--shadow-sm);border:1px solid var(--border-light);position:relative;">
         <div style="width:54px;height:54px;border-radius:14px;background:var(--primary-surface);color:var(--primary-green);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:20px;">
@@ -92,9 +92,9 @@
 </section>
 
 <!-- Principal's Message Section -->
-<section style="padding: 80px 0; background: var(--white);">
+<section class="page-section" style="background: var(--white);">
   <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1.35fr;gap:50px;align-items:center;">
+    <div class="responsive-split-reverse" style="align-items:center;">
       <div>
         <div style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);border:6px solid var(--cream);">
           <img src="{{ url_for('static', filename='images/faculty/principal.jpg') }}" alt="Principal Dr. Arvind Sharma">
@@ -118,7 +118,7 @@
         <p style="color:var(--text-muted);line-height:1.75;margin-bottom:28px;">
           We extend a hearty invitation to parents and guardians to partner with us in this fulfilling journey of shaping enlightened minds and grounded leaders.
         </p>
-        <div style="display:flex;align-items:center;gap:14px;">
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
           <div style="font-family:'Cinzel', serif;font-weight:700;color:var(--primary-dark);font-size:1.1rem;">
             Dr. Arvind Sharma
           </div>
@@ -131,7 +131,7 @@
 </section>
 
 <!-- Timeline of Excellence -->
-<section style="padding: 80px 0; background: var(--cream);">
+<section class="page-section" style="background: var(--cream);">
   <div class="container">
     <div class="section-header">
       <span class="section-tag"><i class="fas fa-history"></i> Milestones</span>
@@ -141,7 +141,7 @@
 
     <div style="max-width:850px;margin:0 auto;position:relative;padding:20px 0;">
       <div style="display:flex;flex-direction:column;gap:30px;">
-        <div style="display:flex;gap:24px;align-items:flex-start;">
+        <div class="timeline-item">
           <div style="background:var(--primary-green);color:var(--white);padding:10px 18px;border-radius:var(--radius-sm);font-weight:800;font-size:1.1rem;min-width:90px;text-align:center;">
             2001
           </div>
@@ -151,7 +151,7 @@
           </div>
         </div>
 
-        <div style="display:flex;gap:24px;align-items:flex-start;">
+        <div class="timeline-item">
           <div style="background:var(--gold);color:var(--primary-dark);padding:10px 18px;border-radius:var(--radius-sm);font-weight:800;font-size:1.1rem;min-width:90px;text-align:center;">
             2009
           </div>
@@ -161,7 +161,7 @@
           </div>
         </div>
 
-        <div style="display:flex;gap:24px;align-items:flex-start;">
+        <div class="timeline-item">
           <div style="background:var(--primary-green);color:var(--white);padding:10px 18px;border-radius:var(--radius-sm);font-weight:800;font-size:1.1rem;min-width:90px;text-align:center;">
             2018
           </div>
@@ -171,7 +171,7 @@
           </div>
         </div>
 
-        <div style="display:flex;gap:24px;align-items:flex-start;">
+        <div class="timeline-item">
           <div style="background:var(--gold);color:var(--primary-dark);padding:10px 18px;border-radius:var(--radius-sm);font-weight:800;font-size:1.1rem;min-width:90px;text-align:center;">
             Present
           </div>

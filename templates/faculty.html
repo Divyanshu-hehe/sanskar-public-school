@@ -19,7 +19,7 @@
 </div>
 
 <!-- Faculty Directory -->
-<section style="padding: 70px 0; background: var(--cream);">
+<section class="page-section" style="background: var(--cream);">
   <div class="container">
     <!-- Department Filter Pills -->
     <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:40px;flex-wrap:wrap;">
@@ -31,7 +31,7 @@
     </div>
 
     <!-- Faculty Cards Grid -->
-    <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:28px;">
+    <div class="responsive-grid-3">
       {% for f in faculty_members %}
       <div style="background:var(--white);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid var(--border-light);transition:var(--transition);display:flex;flex-direction:column;">
         <div style="height:260px;overflow:hidden;position:relative;">

@@ -18,7 +18,7 @@
   </div>
 </div>
 
-<section style="padding: 70px 0; background: var(--cream);">
+<section class="page-section" style="background: var(--cream);">
   <div class="container">
     <!-- Category Filter Tabs -->
     <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:40px;flex-wrap:wrap;">
@@ -30,7 +30,7 @@
     </div>
 
     <!-- Gallery Grid -->
-    <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:24px;">
+    <div class="responsive-grid-3">
       {% for item in items %}
       <div class="gallery-card" style="background:var(--white);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid var(--border-light);cursor:pointer;position:relative;transition:var(--transition);">
         <div style="height:250px;overflow:hidden;position:relative;">
