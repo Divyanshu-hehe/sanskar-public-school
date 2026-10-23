@@ -237,7 +237,7 @@ button, input, select, textarea {
   box-shadow: var(--shadow-sm);
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 10000;
   transition: var(--transition);
 }
 
@@ -297,6 +297,15 @@ button, input, select, textarea {
   display: flex;
   align-items: center;
   gap: 22px;
+}
+
+.mobile-nav-header,
+.mobile-nav-footer {
+  display: none;
+}
+
+.mobile-nav-links {
+  display: contents;
 }
 
 .nav-link {
@@ -375,11 +384,31 @@ button, input, select, textarea {
 
 .mobile-menu-toggle {
   display: none;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
+  background: var(--primary-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 1.35rem;
   color: var(--primary-green);
   cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.2s ease;
+}
+
+.mobile-menu-toggle:hover,
+.mobile-menu-toggle:active {
+  background: var(--primary-green);
+  color: var(--white);
+}
+
+/* Mobile Bottom Taskbar - hidden on desktop */
+.mobile-bottom-taskbar {
+  display: none;
 }
 
 /* ==========================================================================

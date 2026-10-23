@@ -84,6 +84,9 @@
 
   <!-- Main Sticky Header -->
   <header class="site-header">
+    <!-- Mobile Drawer Backdrop inside header stacking context -->
+    <div class="nav-menu-backdrop"></div>
+
     <div class="container nav-container">
       <a href="{{ url_for('main.index') }}" class="brand-wrapper" aria-label="Sanskar Public School Home">
         <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Sanskar Public School Emblem" class="brand-logo-img">
@@ -93,17 +96,60 @@
         </div>
       </a>
 
-      <!-- Desktop & Mobile Navigation Menu -->
+      <!-- Desktop & Mobile Navigation Menu Drawer -->
       <nav class="nav-menu" id="primary-nav">
-        <button type="button" class="mobile-close-btn" aria-label="Close navigation menu">&times;</button>
-        <a href="{{ url_for('main.index') }}" class="nav-link {% if request.endpoint == 'main.index' %}active{% endif %}">Home</a>
-        <a href="{{ url_for('main.about') }}" class="nav-link {% if request.endpoint == 'main.about' %}active{% endif %}">About Us</a>
-        <a href="{{ url_for('main.academics') }}" class="nav-link {% if request.endpoint == 'main.academics' %}active{% endif %}">Academics</a>
-        <a href="{{ url_for('main.admissions') }}" class="nav-link {% if request.endpoint == 'main.admissions' %}active{% endif %}">Admissions</a>
-        <a href="{{ url_for('main.facilities') }}" class="nav-link {% if request.endpoint == 'main.facilities' %}active{% endif %}">Facilities</a>
-        <a href="{{ url_for('main.gallery') }}" class="nav-link {% if request.endpoint == 'main.gallery' %}active{% endif %}">Gallery</a>
-        <a href="{{ url_for('main.news') }}" class="nav-link {% if request.endpoint in ['main.news', 'main.news_detail'] %}active{% endif %}">News & Events</a>
-        <a href="{{ url_for('main.contact') }}" class="nav-link {% if request.endpoint == 'main.contact' %}active{% endif %}">Contact</a>
+        <div class="mobile-nav-header">
+          <div class="mobile-nav-brand">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Sanskar Public School">
+            <div>
+              <span class="mobile-nav-title">{{ school_name }}</span>
+              <span class="mobile-nav-motto">{{ school_motto }}</span>
+            </div>
+          </div>
+          <button type="button" class="mobile-close-btn" aria-label="Close navigation menu">&times;</button>
+        </div>
+
+        <div class="mobile-nav-links">
+          <a href="{{ url_for('main.index') }}" class="nav-link {% if request.endpoint == 'main.index' %}active{% endif %}">
+            <i class="fas fa-home"></i> <span>Home</span>
+          </a>
+          <a href="{{ url_for('main.about') }}" class="nav-link {% if request.endpoint == 'main.about' %}active{% endif %}">
+            <i class="fas fa-landmark"></i> <span>About Us</span>
+          </a>
+          <a href="{{ url_for('main.academics') }}" class="nav-link {% if request.endpoint == 'main.academics' %}active{% endif %}">
+            <i class="fas fa-graduation-cap"></i> <span>Academics</span>
+          </a>
+          <a href="{{ url_for('main.admissions') }}" class="nav-link {% if request.endpoint == 'main.admissions' %}active{% endif %}">
+            <i class="fas fa-user-graduate"></i> <span>Admissions</span>
+          </a>
+          <a href="{{ url_for('main.facilities') }}" class="nav-link {% if request.endpoint == 'main.facilities' %}active{% endif %}">
+            <i class="fas fa-cubes"></i> <span>Facilities</span>
+          </a>
+          <a href="{{ url_for('main.gallery') }}" class="nav-link {% if request.endpoint == 'main.gallery' %}active{% endif %}">
+            <i class="fas fa-images"></i> <span>Gallery</span>
+          </a>
+          <a href="{{ url_for('main.news') }}" class="nav-link {% if request.endpoint in ['main.news', 'main.news_detail'] %}active{% endif %}">
+            <i class="fas fa-newspaper"></i> <span>News & Events</span>
+          </a>
+          <a href="{{ url_for('main.student_life') }}" class="nav-link {% if request.endpoint == 'main.student_life' %}active{% endif %}">
+            <i class="fas fa-users"></i> <span>Student Life</span>
+          </a>
+          <a href="{{ url_for('main.parent_resources') }}" class="nav-link {% if request.endpoint == 'main.parent_resources' %}active{% endif %}">
+            <i class="fas fa-folder-open"></i> <span>Parent Resources</span>
+          </a>
+          <a href="{{ url_for('main.contact') }}" class="nav-link {% if request.endpoint == 'main.contact' %}active{% endif %}">
+            <i class="fas fa-phone-alt"></i> <span>Contact</span>
+          </a>
+        </div>
+
+        <div class="mobile-nav-footer">
+          <a href="{{ url_for('main.admissions') }}" class="btn btn-gold" style="width:100%;margin-bottom:10px;justify-content:center;">
+            <i class="fas fa-file-signature"></i> <span>Apply Online</span>
+          </a>
+          <a href="tel:{{ school_phone }}" class="btn btn-outline" style="width:100%;font-size:0.88rem;justify-content:center;">
+            <i class="fas fa-phone-alt"></i> <span>Call Helpline</span>
+          </a>
+        </div>
       </nav>
 
       <!-- Header Action Elements -->
@@ -115,15 +161,12 @@
           <span>Apply for Admission</span>
           <i class="fas fa-arrow-right"></i>
         </a>
-        <button type="button" class="mobile-menu-toggle" aria-label="Toggle mobile navigation menu">
+        <button type="button" class="mobile-menu-toggle" aria-label="Toggle mobile navigation menu" aria-expanded="false">
           <i class="fas fa-bars"></i>
         </button>
       </div>
     </div>
   </header>
-
-  <!-- Mobile Drawer Backdrop -->
-  <div class="nav-menu-backdrop"></div>
 
   <!-- Flash Messages -->
   {% with messages = get_flashed_messages(with_categories=true) %}
@@ -237,6 +280,32 @@
   <button type="button" class="back-to-top-btn" aria-label="Scroll back to top">
     <i class="fas fa-arrow-up"></i>
   </button>
+
+  <!-- Mobile Sticky Action Taskbar (Visible on Mobile <= 768px) -->
+  <nav class="mobile-bottom-taskbar" id="mobile-taskbar" aria-label="Mobile Bottom Taskbar">
+    <a href="{{ url_for('main.index') }}" class="taskbar-btn {% if request.endpoint == 'main.index' %}active{% endif %}">
+      <i class="fas fa-home"></i>
+      <span>Home</span>
+    </a>
+    <a href="tel:{{ school_phone }}" class="taskbar-btn">
+      <i class="fas fa-phone-alt"></i>
+      <span>Call Desk</span>
+    </a>
+    <a href="{{ url_for('main.admissions') }}" class="taskbar-btn taskbar-apply-btn {% if request.endpoint == 'main.admissions' %}active{% endif %}">
+      <div class="taskbar-apply-icon">
+        <i class="fas fa-graduation-cap"></i>
+      </div>
+      <span>Apply</span>
+    </a>
+    <a href="{{ url_for('main.admission_status') }}" class="taskbar-btn {% if request.endpoint == 'main.admission_status' %}active{% endif %}">
+      <i class="fas fa-search"></i>
+      <span>Track</span>
+    </a>
+    <button type="button" class="taskbar-btn taskbar-menu-toggle-btn" aria-label="Open mobile menu">
+      <i class="fas fa-bars"></i>
+      <span>Menu</span>
+    </button>
+  </nav>
 
   <!-- Core Scripts -->
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
