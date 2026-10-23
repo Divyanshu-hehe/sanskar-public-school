@@ -299,15 +299,6 @@ button, input, select, textarea {
   gap: 22px;
 }
 
-.mobile-nav-header,
-.mobile-nav-footer {
-  display: none;
-}
-
-.mobile-nav-links {
-  display: contents;
-}
-
 .nav-link {
   font-size: 0.93rem;
   font-weight: 600;
@@ -406,8 +397,8 @@ button, input, select, textarea {
   color: var(--white);
 }
 
-/* Mobile Bottom Taskbar - hidden on desktop */
-.mobile-bottom-taskbar {
+/* Mobile Navigation Dropdown Accordion - Hidden on Desktop */
+.mobile-nav-dropdown {
   display: none;
 }
 

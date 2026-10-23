@@ -218,176 +218,167 @@
     text-align: center;
   }
   
+  /* Mobile Header Navigation Dropdown Accordion */
+  .nav-menu {
+    display: none;
+  }
+
   .mobile-menu-toggle {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
   }
 
-  .nav-menu-backdrop {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100vw;
-    height: 100vh;
-    height: 100dvh;
-    background: rgba(0, 0, 0, 0.58);
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
-    z-index: 10001;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    cursor: pointer;
-    touch-action: none;
+  .mobile-menu-toggle.active {
+    background: var(--primary-green);
+    color: var(--white);
+    border-color: var(--primary-green);
   }
 
-  .nav-menu-backdrop.active {
+  .mobile-menu-toggle.active .toggle-icon-bars {
+    display: none !important;
+  }
+
+  .mobile-menu-toggle.active .toggle-icon-times {
+    display: inline-block !important;
+  }
+
+  .mobile-nav-dropdown {
     display: block;
-    opacity: 1;
+    width: 100%;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+    background: var(--white);
+    border-top: 1px solid var(--border-light);
+    box-shadow: 0 20px 40px rgba(0, 45, 30, 0.15);
+    transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
   }
 
-  .nav-menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: min(340px, 86vw);
-    height: 100vh;
-    height: 100dvh;
-    background: #ffffff;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    padding: 0;
-    box-shadow: -10px 0 35px rgba(0, 0, 0, 0.3);
-    transition: right 0.32s cubic-bezier(0.16, 1, 0.3, 1);
-    z-index: 10002;
+  .mobile-nav-dropdown.is-open {
+    max-height: calc(100vh - 72px);
+    opacity: 1;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    gap: 0;
+    pointer-events: auto;
   }
 
-  .nav-menu.open {
-    right: 0;
+  .mobile-dropdown-container {
+    padding: 12px 18px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 
-  .mobile-nav-header {
+  .mobile-dropdown-links {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .mobile-dropdown-item {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 16px 20px;
-    border-bottom: 1px solid var(--border-light);
-    background: var(--primary-surface);
-    flex-shrink: 0;
-  }
-
-  .mobile-nav-brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .mobile-nav-brand img {
-    width: 38px;
-    height: 38px;
-    object-fit: contain;
-  }
-
-  .mobile-nav-title {
-    display: block;
-    font-family: var(--font-heading);
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: var(--text-dark);
     font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--primary-green);
-    line-height: 1.15;
-  }
-
-  .mobile-nav-motto {
-    display: block;
-    font-size: 0.72rem;
-    color: #6E5300;
     font-weight: 600;
-  }
-
-  .mobile-close-btn {
-    position: static;
-    background: rgba(0, 0, 0, 0.06);
-    border: none;
-    width: 38px;
-    height: 38px;
-    min-width: 38px;
-    min-height: 38px;
-    border-radius: 50%;
-    font-size: 1.4rem;
-    line-height: 1;
-    color: var(--primary-dark);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
+    transition: background 0.18s ease, color 0.18s ease;
     -webkit-tap-highlight-color: transparent;
   }
 
-  .mobile-close-btn:hover,
-  .mobile-close-btn:active {
-    background: var(--gold);
-    color: var(--primary-dark);
-  }
-
-  .mobile-nav-links {
-    display: flex;
-    flex-direction: column;
-    padding: 10px 0;
-    overflow-y: auto;
-    flex: 1;
-    gap: 0;
-  }
-
-  .mobile-nav-links .nav-link {
+  .mobile-dropdown-item .mobile-item-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: var(--primary-surface);
+    color: var(--primary-green);
     display: flex;
     align-items: center;
-    gap: 12px;
-    font-size: 0.96rem;
+    justify-content: center;
+    font-size: 0.95rem;
+    margin-right: 14px;
+    flex-shrink: 0;
+    transition: background 0.18s ease, color 0.18s ease;
+  }
+
+  .mobile-dropdown-item .mobile-item-label {
+    flex: 1;
+    font-size: 0.95rem;
     font-weight: 600;
-    color: var(--text-dark);
-    width: 100%;
-    padding: 13px 22px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    transition: background 0.2s ease, color 0.2s ease;
-    text-decoration: none;
   }
 
-  .mobile-nav-links .nav-link::after {
-    display: none;
+  .mobile-dropdown-item .mobile-item-arrow {
+    font-size: 0.78rem;
+    color: #94a3b8;
+    transition: transform 0.18s ease, color 0.18s ease;
   }
 
-  .mobile-nav-links .nav-link i {
-    width: 22px;
-    color: var(--primary-green);
-    text-align: center;
-    font-size: 1.05rem;
-  }
-
-  .mobile-nav-links .nav-link:hover,
-  .mobile-nav-links .nav-link.active {
+  .mobile-dropdown-item:hover,
+  .mobile-dropdown-item:active {
     background: var(--primary-surface);
     color: var(--primary-green);
   }
 
-  .mobile-nav-links .nav-link.active i {
+  .mobile-dropdown-item:hover .mobile-item-icon,
+  .mobile-dropdown-item:active .mobile-item-icon {
+    background: var(--primary-green);
+    color: var(--white);
+  }
+
+  .mobile-dropdown-item:hover .mobile-item-arrow,
+  .mobile-dropdown-item:active .mobile-item-arrow {
+    color: var(--primary-green);
+    transform: translateX(3px);
+  }
+
+  .mobile-dropdown-item.active {
+    background: rgba(0, 75, 53, 0.08);
+    color: var(--primary-green);
+    font-weight: 700;
+  }
+
+  .mobile-dropdown-item.active .mobile-item-icon {
+    background: var(--primary-green);
     color: var(--gold);
   }
 
-  .mobile-nav-footer {
+  .mobile-dropdown-actions {
     display: flex;
     flex-direction: column;
-    padding: 16px 20px;
-    border-top: 1px solid var(--border-light);
-    background: #fbfbfb;
-    flex-shrink: 0;
+    gap: 10px;
+    padding-top: 14px;
+    margin-top: 8px;
+    border-top: 1px dashed var(--border-light);
+  }
+
+  .mobile-dropdown-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 18px;
+    font-size: 0.92rem;
+    font-weight: 700;
+  }
+
+  .mobile-dropdown-track-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 8px 4px;
+    transition: color 0.18s ease;
+  }
+
+  .mobile-dropdown-track-link:hover,
+  .mobile-dropdown-track-link:active {
+    color: var(--primary-green);
   }
 
   /* Hero Section */
@@ -519,116 +510,6 @@
 
   .page-section {
     padding: 50px 0;
-  }
-
-  /* Mobile Taskbar & Viewport Adjustments */
-  body {
-    padding-bottom: 66px;
-  }
-
-  .back-to-top-btn {
-    bottom: 80px !important;
-    right: 16px !important;
-  }
-
-  .mobile-bottom-taskbar {
-    display: flex;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-top: 1px solid rgba(0, 75, 53, 0.12);
-    box-shadow: 0 -3px 16px rgba(0, 0, 0, 0.08);
-    z-index: 9995;
-    align-items: center;
-    justify-content: space-around;
-    padding: 0 4px;
-    padding-bottom: env(safe-area-inset-bottom, 0);
-  }
-
-  .taskbar-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 3px;
-    background: none;
-    border: none;
-    color: #556270;
-    font-size: 0.68rem;
-    font-weight: 600;
-    text-decoration: none;
-    flex: 1;
-    height: 100%;
-    padding: 6px 2px;
-    cursor: pointer;
-    transition: color 0.2s ease, transform 0.15s ease;
-    -webkit-tap-highlight-color: transparent;
-    user-select: none;
-  }
-
-  .taskbar-btn i {
-    font-size: 1.15rem;
-    line-height: 1;
-    color: #64748b;
-    transition: transform 0.2s ease, color 0.2s ease;
-  }
-
-  .taskbar-btn:active {
-    transform: scale(0.92);
-  }
-
-  .taskbar-btn.active,
-  .taskbar-btn:hover {
-    color: var(--primary-green);
-  }
-
-  .taskbar-btn.active i,
-  .taskbar-btn:hover i {
-    color: var(--primary-green);
-    transform: translateY(-1px);
-  }
-
-  /* Center Elevated Apply Button */
-  .taskbar-apply-btn {
-    position: relative;
-    color: var(--primary-dark);
-  }
-
-  .taskbar-apply-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #F4B900, #E0A800);
-    color: #003B2D;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: -16px;
-    box-shadow: 0 4px 12px rgba(244, 185, 0, 0.45), 0 2px 4px rgba(0, 0, 0, 0.1);
-    border: 3px solid #ffffff;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .taskbar-apply-icon i {
-    font-size: 1.15rem;
-    color: #003B2D;
-  }
-
-  .taskbar-apply-btn:active .taskbar-apply-icon {
-    transform: scale(0.92);
-    box-shadow: 0 2px 6px rgba(244, 185, 0, 0.4);
-  }
-
-  .taskbar-apply-btn span {
-    font-weight: 700;
-    color: var(--primary-dark);
-    font-size: 0.68rem;
   }
 
   /* Header Actions & Mobile Top Bar */
@@ -792,23 +673,60 @@
     gap: 12px;
   }
 
-  /* Header Branding Scale */
+  /* Header Branding Scale for Phones */
+  .brand-wrapper {
+    gap: 10px;
+    min-width: 0;
+  }
+
   .brand-logo-img {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 6px;
+  }
+
+  .brand-text {
+    min-width: 0;
+    overflow: hidden;
   }
 
   .school-title {
-    font-size: 1.12rem;
+    font-size: 1.05rem;
     letter-spacing: -0.01em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .school-sanskrit-motto {
-    font-size: 0.72rem;
+    font-size: 0.68rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .nav-container {
-    padding: 10px 16px;
+    padding: 8px 14px;
+    gap: 8px;
+  }
+
+  .nav-actions {
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .search-trigger-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .mobile-menu-toggle {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    font-size: 1.2rem;
   }
 
   /* Hero Section */
