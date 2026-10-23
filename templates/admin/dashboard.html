@@ -1,0 +1,178 @@
+{% extends 'admin/base.html' %}
+
+{% block page_title %}Dashboard Overview{% endblock %}
+
+{% block content %}
+<!-- Metric Cards Grid -->
+<div class="admin-metrics-grid">
+  <!-- Metric 1: Total Applications -->
+  <div class="admin-metric-card">
+    <div class="metric-data">
+      <h3>{{ stats.total_admissions }}</h3>
+      <span>Total Admissions</span>
+    </div>
+    <div class="metric-icon-box green">
+      <i class="fas fa-user-graduate"></i>
+    </div>
+  </div>
+
+  <!-- Metric 2: Pending Applications -->
+  <div class="admin-metric-card">
+    <div class="metric-data">
+      <h3>{{ stats.pending_admissions }}</h3>
+      <span>Pending Review</span>
+    </div>
+    <div class="metric-icon-box gold">
+      <i class="fas fa-clock"></i>
+    </div>
+  </div>
+
+  <!-- Metric 3: New Inquiries -->
+  <div class="admin-metric-card">
+    <div class="metric-data">
+      <h3>{{ stats.new_inquiries }}</h3>
+      <span>New Inquiries</span>
+    </div>
+    <div class="metric-icon-box blue">
+      <i class="fas fa-envelope"></i>
+    </div>
+  </div>
+
+  <!-- Metric 4: Faculty Count -->
+  <div class="admin-metric-card">
+    <div class="metric-data">
+      <h3>{{ stats.total_faculty }}</h3>
+      <span>Faculty Members</span>
+    </div>
+    <div class="metric-icon-box green">
+      <i class="fas fa-chalkboard-teacher"></i>
+    </div>
+  </div>
+</div>
+
+<!-- Secondary Stats Strip -->
+<div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:16px;margin-bottom:32px;">
+  <div style="background:var(--white);padding:14px 20px;border-radius:var(--radius-sm);border:1px solid #E5EBE8;display:flex;align-items:center;justify-content:space-between;">
+    <span style="font-size:0.85rem;color:var(--text-muted);font-weight:600;">Active News</span>
+    <span style="font-size:1.15rem;font-weight:800;color:var(--primary-dark);">{{ stats.total_news }}</span>
+  </div>
+  <div style="background:var(--white);padding:14px 20px;border-radius:var(--radius-sm);border:1px solid #E5EBE8;display:flex;align-items:center;justify-content:space-between;">
+    <span style="font-size:0.85rem;color:var(--text-muted);font-weight:600;">Gallery Photos</span>
+    <span style="font-size:1.15rem;font-weight:800;color:var(--primary-dark);">{{ stats.total_gallery }}</span>
+  </div>
+  <div style="background:var(--white);padding:14px 20px;border-radius:var(--radius-sm);border:1px solid #E5EBE8;display:flex;align-items:center;justify-content:space-between;">
+    <span style="font-size:0.85rem;color:var(--text-muted);font-weight:600;">Published FAQs</span>
+    <span style="font-size:1.15rem;font-weight:800;color:var(--primary-dark);">{{ stats.total_faqs }}</span>
+  </div>
+  <div style="background:var(--white);padding:14px 20px;border-radius:var(--radius-sm);border:1px solid #E5EBE8;display:flex;align-items:center;justify-content:space-between;">
+    <span style="font-size:0.85rem;color:var(--text-muted);font-weight:600;">Downloadables</span>
+    <span style="font-size:1.15rem;font-weight:800;color:var(--primary-dark);">{{ stats.total_downloads }}</span>
+  </div>
+</div>
+
+<!-- Recent Applications Table Card -->
+<div class="admin-card">
+  <div class="admin-card-header">
+    <h2><i class="fas fa-user-clock" style="color:var(--gold);margin-right:8px;"></i> Recent Admission Applications</h2>
+    <a href="{{ url_for('admin.admissions') }}" class="btn btn-outline" style="padding:6px 16px;font-size:0.82rem;">View All Applications</a>
+  </div>
+
+  <div class="admin-table-container">
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>App No.</th>
+          <th>Student</th>
+          <th>Grade</th>
+          <th>Parent / Phone</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for app in recent_admissions %}
+        <tr>
+          <td><strong style="font-family:monospace;color:var(--primary-green);">{{ app.application_number }}</strong></td>
+          <td><strong>{{ app.student_name }}</strong></td>
+          <td>{{ app.grade_applying }}</td>
+          <td>
+            <div>{{ app.parent_name }}</div>
+            <div style="font-size:0.8rem;color:var(--text-light);">{{ app.phone }}</div>
+          </td>
+          <td style="font-size:0.82rem;color:var(--text-light);">{{ app.created_at.strftime('%d %b, %Y') if app.created_at else '' }}</td>
+          <td>
+            {% if app.status == 'Approved' %}
+            <span class="status-badge badge-approved">Approved</span>
+            {% elif app.status == 'Under Review' %}
+            <span class="status-badge badge-review">Under Review</span>
+            {% elif app.status == 'Rejected' %}
+            <span class="status-badge badge-rejected">Rejected</span>
+            {% else %}
+            <span class="status-badge badge-pending">Pending</span>
+            {% endif %}
+          </td>
+          <td>
+            <a href="{{ url_for('admin.admissions') }}?search={{ app.application_number }}" class="btn btn-outline" style="padding:4px 10px;font-size:0.75rem;">
+              Review
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+
+        {% if recent_admissions|length == 0 %}
+        <tr>
+          <td colspan="7" style="text-align:center;padding:30px;color:var(--text-muted);">
+            No admission applications received yet.
+          </td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Recent Contact Inquiries Card -->
+<div class="admin-card">
+  <div class="admin-card-header">
+    <h2><i class="fas fa-inbox" style="color:var(--primary-green);margin-right:8px;"></i> Recent Inquiries</h2>
+    <a href="{{ url_for('admin.inquiries') }}" class="btn btn-outline" style="padding:6px 16px;font-size:0.82rem;">Manage All Inquiries</a>
+  </div>
+
+  <div class="admin-table-container">
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Name / Contact</th>
+          <th>Subject</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for inq in recent_inquiries %}
+        <tr>
+          <td>
+            <strong>{{ inq.name }}</strong>
+            <div style="font-size:0.8rem;color:var(--text-light);">{{ inq.email }} | {{ inq.phone }}</div>
+          </td>
+          <td>{{ inq.subject }}</td>
+          <td style="font-size:0.82rem;color:var(--text-light);">{{ inq.created_at.strftime('%d %b, %Y') if inq.created_at else '' }}</td>
+          <td>
+            <span class="status-badge {% if inq.status == 'New' %}badge-new{% else %}badge-resolved{% endif %}">
+              {{ inq.status }}
+            </span>
+          </td>
+          <td>
+            <a href="{{ url_for('admin.inquiries') }}" class="btn btn-outline" style="padding:4px 10px;font-size:0.75rem;">
+              View
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

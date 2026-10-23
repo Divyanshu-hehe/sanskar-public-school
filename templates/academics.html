@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+
+{% block title %}Academics & Curriculum | {{ school_name }}{% endblock %}
+
+{% block content %}
+<!-- Page Banner -->
+<div class="page-banner">
+  <div class="container">
+    <div>
+      <h1 class="page-banner-title">Our Academic Programs</h1>
+      <p class="page-banner-subtitle">Inquiring Minds, Conceptual Foundations & Rigorous 21st-Century Competencies</p>
+    </div>
+    <div class="breadcrumb">
+      <a href="{{ url_for('main.index') }}">Home</a>
+      <span>/</span>
+      <span>Academics</span>
+    </div>
+  </div>
+</div>
+
+<!-- Academic Architecture Overview -->
+<section style="padding: 70px 0; background: var(--white);">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag"><i class="fas fa-book-open"></i> Pedagogical Framework</span>
+      <h2 class="section-title">Holistic Learning for Every Stage of Growth</h2>
+      <p class="section-desc">
+        Our curriculum balances academic rigour with hands-on inquiry, artistic expression, physical fitness, and moral consciousness.
+      </p>
+    </div>
+
+    <!-- 1. Pre-Primary Wing -->
+    <div id="pre-primary" style="display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center;margin-bottom:70px;background:var(--cream);padding:36px;border-radius:var(--radius-lg);border:1px solid var(--border-light);">
+      <div style="border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);">
+        <img src="{{ url_for('static', filename='images/academic/pre_primary.jpg') }}" alt="Pre-Primary wing at Sanskar Public School">
+      </div>
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:8px;background:var(--gold-light);color:#996B00;font-weight:700;padding:4px 14px;border-radius:var(--radius-full);font-size:0.8rem;margin-bottom:12px;">
+          Nursery • LKG • UKG
+        </div>
+        <h3 style="font-size:1.8rem;font-weight:800;color:var(--primary-dark);margin-bottom:12px;">Pre-Primary (Early Childhood Wing)</h3>
+        <p style="color:var(--text-muted);line-height:1.7;margin-bottom:16px;">
+          The early formative years are filled with wonder and joy. Our pre-primary environment leverages Montessori-inspired discovery, phonics immersion, sensory stimulation, and guided play to develop motor dexterity and social-emotional confidence.
+        </p>
+        <ul style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:0.9rem;color:var(--text-dark);font-weight:600;">
+          <li><i class="fas fa-check-circle" style="color:var(--primary-green);"></i> Phonics & Storytelling</li>
+          <li><i class="fas fa-check-circle" style="color:var(--primary-green);"></i> Sensory & Sand Play</li>
+          <li><i class="fas fa-check-circle" style="color:var(--primary-green);"></i> Music, Rhythm & Movement</li>
+          <li><i class="fas fa-check-circle" style="color:var(--primary-green);"></i> Foundation Numeracy</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 2. Primary Wing -->
+    <div id="primary" style="display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;margin-bottom:70px;background:var(--white);padding:36px;border-radius:var(--radius-lg);border:1px solid var(--border-light);box-shadow:var(--shadow-sm);">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:8px;background:var(--primary-surface);color:var(--primary-green);font-weight:700;padding:4px 14px;border-radius:var(--radius-full);font-size:0.8rem;margin-bottom:12px;">
+          Classes I – V
+        </div>
+        <h3 style="font-size:1.8rem;font-weight:800;color:var(--primary-dark);margin-bottom:12px;">Primary Wing (Foundation Stage)</h3>
+        <p style="color:var(--text-muted);line-height:1.7;margin-bottom:16px;">
+          Building strong literacy, computational numeracy, and scientific curiosity. Children learn through collaborative group tasks, environmental explorations, and expressive bilingual reading.
+        </p>
+        <ul style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:0.9rem;color:var(--text-dark);font-weight:600;">
+          <li><i class="fas fa-check-circle" style="color:var(--primary-green);"></i> English & Hindi Literature</li>
+          <li><i class="fas fa-check-circle" style="color:var(--primary-green);"></i> Mathematics Lab Concepts</li>
+          <li><i class="fas fa-check-circle" style="color:var(--primary-green);"></i> Environmental Science (EVS)</li>
+          <li><i class="fas fa-check-circle" style="color:var(--primary-green);"></i> Visual Arts & Performing Arts</li>
+        </ul>
+      </div>
+      <div style="border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);">
+        <img src="{{ url_for('static', filename='images/academic/primary.jpg') }}" alt="Primary classroom at Sanskar">
+      </div>
+    </div>
+
+    <!-- 3. Middle School Wing -->
+    <div id="middle" style="display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center;margin-bottom:70px;background:var(--cream);padding:36px;border-radius:var(--radius-lg);border:1px solid var(--border-light);">
+      <div style="border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);">
+        <img src="{{ url_for('static', filename='images/academic/middle_school.jpg') }}" alt="Middle School classroom at Sanskar">
+      </div>
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:8px;background:#FDE8EA;color:var(--red-accent);font-weight:700;padding:4px 14px;border-radius:var(--radius-full);font-size:0.8rem;margin-bottom:12px;">
+          Classes VI – VIII
+        </div>
+        <h3 style="font-size:1.8rem;font-weight:800;color:var(--primary-dark);margin-bottom:12px;">Middle School (Preparatory & Exploratory Stage)</h3>
+        <p style="color:var(--text-muted);line-height:1.7;margin-bottom:16px;">
+          Transitioning toward specialized disciplines. Emphasis on laboratory experimentation in Physics, Chemistry, and Biology, along with third-language options (Sanskrit/French) and introduction to computational logic and coding.
+        </p>
+        <ul style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:0.9rem;color:var(--text-dark);font-weight:600;">
+          <li><i class="fas fa-check-circle" style="color:var(--primary-green);"></i> Integrated Science Laboratories</li>
+          <li><i class="fas fa-check-circle" style="color:var(--primary-green);"></i> Coding & Robotics Fundamentals</li>
+          <li><i class="fas fa-check-circle" style="color:var(--primary-green);"></i> Social Sciences & Global Geography</li>
+          <li><i class="fas fa-check-circle" style="color:var(--primary-green);"></i> Third Language Proficiency</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 4. Senior Secondary Wing -->
+    <div id="senior" style="display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;background:var(--white);padding:36px;border-radius:var(--radius-lg);border:1px solid var(--border-light);box-shadow:var(--shadow-sm);">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:8px;background:#E0F2F1;color:#00796B;font-weight:700;padding:4px 14px;border-radius:var(--radius-full);font-size:0.8rem;margin-bottom:12px;">
+          Classes IX – XII (CBSE Board)
+        </div>
+        <h3 style="font-size:1.8rem;font-weight:800;color:var(--primary-dark);margin-bottom:12px;">Senior Secondary (Specialization & Career Wings)</h3>
+        <p style="color:var(--text-muted);line-height:1.7;margin-bottom:16px;">
+          Rigorous preparation for CBSE Board examinations and national competitive benchmarks (JEE, NEET, CUET, CLAT). Stream pathways:
+        </p>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:0.9rem;color:var(--text-dark);margin-bottom:20px;">
+          <div><strong>1. Science Stream:</strong> Physics, Chemistry, Mathematics, Biology, Computer Science / Physical Education.</div>
+          <div><strong>2. Commerce Stream:</strong> Accountancy, Business Studies, Economics, Applied Mathematics, Informatics Practices.</div>
+          <div><strong>3. Humanities Stream:</strong> History, Political Science, Psychology, Sociology, Economics, Legal Studies.</div>
+        </div>
+      </div>
+      <div style="border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);">
+        <img src="{{ url_for('static', filename='images/facilities/stem_lab.jpg') }}" alt="Senior Secondary laboratory at Sanskar">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Teaching Methodology & Assessments -->
+<section style="padding: 70px 0; background: var(--cream);">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag"><i class="fas fa-lightbulb"></i> Pedagogical Innovations</span>
+      <h2 class="section-title">Teaching Methodology & Continuous Evaluation</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:28px;">
+      <div style="background:var(--white);padding:30px;border-radius:var(--radius-md);border:1px solid var(--border-light);">
+        <div style="font-size:1.6rem;color:var(--primary-green);margin-bottom:12px;"><i class="fas fa-laptop-code"></i></div>
+        <h4 style="font-size:1.2rem;font-weight:800;color:var(--primary-dark);margin-bottom:10px;">Smart Digital Classrooms</h4>
+        <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.65;">
+          Every classroom is equipped with interactive touch displays, 3D visualization modules, and curated digital courseware to bring theoretical concepts alive.
+        </p>
+      </div>
+
+      <div style="background:var(--white);padding:30px;border-radius:var(--radius-md);border:1px solid var(--border-light);">
+        <div style="font-size:1.6rem;color:var(--gold);margin-bottom:12px;"><i class="fas fa-flask"></i></div>
+        <h4 style="font-size:1.2rem;font-weight:800;color:var(--primary-dark);margin-bottom:10px;">Experiential Inquiry</h4>
+        <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.65;">
+          Moving beyond rote memorization through regular lab investigations, field excursions, mathematical models, and interdisciplinary presentations.
+        </p>
+      </div>
+
+      <div style="background:var(--white);padding:30px;border-radius:var(--radius-md);border:1px solid var(--border-light);">
+        <div style="font-size:1.6rem;color:var(--red-accent);margin-bottom:12px;"><i class="fas fa-chart-line"></i></div>
+        <h4 style="font-size:1.2rem;font-weight:800;color:var(--primary-dark);margin-bottom:10px;">Holistic Assessment</h4>
+        <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.65;">
+          Continuous formative reviews evaluating not just written exam scores, but critical thinking, lab performance, communication skills, and ethical behavior.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

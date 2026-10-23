@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE066" />
+      <stop offset="50%" stop-color="#F4B900" />
+      <stop offset="100%" stop-color="#D49A00" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#005A40" />
+      <stop offset="100%" stop-color="#003B2D" />
+    </linearGradient>
+    <path id="textCircle" d="M 60,200 A 140,140 0 1,1 340,200" fill="none"/>
+  </defs>
+
+  <!-- Outer Ring with Golden Border -->
+  <circle cx="200" cy="200" r="190" fill="url(#greenGrad)" stroke="url(#goldGrad)" stroke-width="8"/>
+  <circle cx="200" cy="200" r="172" fill="none" stroke="url(#goldGrad)" stroke-width="2" stroke-dasharray="4,4"/>
+  <circle cx="200" cy="200" r="136" fill="#FFFFFF" stroke="url(#goldGrad)" stroke-width="6"/>
+
+  <!-- School Name Curved Text -->
+  <text font-family="'Cinzel', 'Playfair Display', 'Georgia', serif" font-size="20.5" font-weight="900" fill="#FFFFFF" letter-spacing="3.5">
+    <textPath href="#textCircle" startOffset="50%" text-anchor="middle">
+      SANSKAR PUBLIC SCHOOL
+    </textPath>
+  </text>
+
+  <!-- Golden Stars on sides of text -->
+  <path d="M 68,206 L 71,214 L 80,214 L 73,219 L 76,227 L 68,222 L 60,227 L 63,219 L 56,214 L 65,214 Z" fill="url(#goldGrad)" transform="scale(0.8) translate(15, 45)"/>
+  <path d="M 332,206 L 335,214 L 344,214 L 337,219 L 340,227 L 332,222 L 324,227 L 327,219 L 320,214 L 329,214 Z" fill="url(#goldGrad)" transform="scale(0.8) translate(75, 45)"/>
+
+  <!-- Inner Center Graphic -->
+  <!-- Sun Rays & Rising Sun -->
+  <g id="sun" transform="translate(200, 160)">
+    <!-- Rays -->
+    <line x1="0" y1="-50" x2="0" y2="-65" stroke="url(#goldGrad)" stroke-width="4" stroke-linecap="round"/>
+    <line x1="28" y1="-42" x2="38" y2="-55" stroke="url(#goldGrad)" stroke-width="4" stroke-linecap="round"/>
+    <line x1="46" y1="-18" x2="60" y2="-24" stroke="url(#goldGrad)" stroke-width="4" stroke-linecap="round"/>
+    <line x1="-28" y1="-42" x2="-38" y2="-55" stroke="url(#goldGrad)" stroke-width="4" stroke-linecap="round"/>
+    <line x1="-46" y1="-18" x2="-60" y2="-24" stroke="url(#goldGrad)" stroke-width="4" stroke-linecap="round"/>
+    <!-- Sun Half Disc -->
+    <path d="M -45,0 A 45,45 0 0,1 45,0 Z" fill="url(#goldGrad)"/>
+  </g>
+
+  <!-- Open Book of Knowledge -->
+  <g id="book" transform="translate(200, 195)">
+    <!-- Left Page -->
+    <path d="M 0,0 C -25,-12 -65,-8 -75,10 C -75,28 -30,22 0,35 Z" fill="#F8F7F0" stroke="#004B35" stroke-width="3"/>
+    <!-- Right Page -->
+    <path d="M 0,0 C 25,-12 65,-8 75,10 C 75,28 30,22 0,35 Z" fill="#FFFFFF" stroke="#004B35" stroke-width="3"/>
+    <!-- Book Spine & Pages Lines -->
+    <path d="M 0,0 L 0,35" stroke="#004B35" stroke-width="4"/>
+    <path d="M -15,8 C -35,2 -55,6 -65,15" stroke="#004B35" stroke-width="1.5" fill="none" opacity="0.6"/>
+    <path d="M -15,16 C -35,10 -55,14 -65,22" stroke="#004B35" stroke-width="1.5" fill="none" opacity="0.6"/>
+    <path d="M 15,8 C 35,2 55,6 65,15" stroke="#004B35" stroke-width="1.5" fill="none" opacity="0.6"/>
+    <path d="M 15,16 C 35,10 55,14 65,22" stroke="#004B35" stroke-width="1.5" fill="none" opacity="0.6"/>
+  </g>
+
+  <!-- Laurel Leaves (Wreath of Excellence) -->
+  <g id="laurel-left" fill="#004B35" stroke="#003B2D" stroke-width="0.5">
+    <ellipse cx="118" cy="185" rx="8" ry="4" transform="rotate(-30, 118, 185)"/>
+    <ellipse cx="114" cy="205" rx="9" ry="4.5" transform="rotate(-15, 114, 205)"/>
+    <ellipse cx="118" cy="225" rx="9" ry="4.5" transform="rotate(10, 118, 225)"/>
+    <ellipse cx="128" cy="242" rx="9" ry="4.5" transform="rotate(35, 128, 242)"/>
+  </g>
+  <g id="laurel-right" fill="#004B35" stroke="#003B2D" stroke-width="0.5">
+    <ellipse cx="282" cy="185" rx="8" ry="4" transform="rotate(30, 282, 185)"/>
+    <ellipse cx="286" cy="205" rx="9" ry="4.5" transform="rotate(15, 286, 205)"/>
+    <ellipse cx="282" cy="225" rx="9" ry="4.5" transform="rotate(-10, 282, 225)"/>
+    <ellipse cx="272" cy="242" rx="9" ry="4.5" transform="rotate(-35, 272, 242)"/>
+  </g>
+
+  <!-- Sanskrit Motto Banner at Bottom -->
+  <g id="banner" transform="translate(200, 290)">
+    <!-- Golden Ribbon Background -->
+    <path d="M -150,15 L -130,-10 L 130,-10 L 150,15 L 125,12 L 0,16 L -125,12 Z" fill="url(#goldGrad)" stroke="#B38000" stroke-width="2"/>
+    <path d="M -130,-10 L -140,-25 L -120,-16 Z" fill="#B38000"/>
+    <path d="M 130,-10 L 140,-25 L 120,-16 Z" fill="#B38000"/>
+    <!-- Motto Text -->
+    <text x="0" y="5" font-family="'Cinzel', 'Noto Sans Devanagari', 'Mangal', 'Georgia', sans-serif" font-size="16" font-weight="bold" fill="#003B2D" text-anchor="middle" letter-spacing="1.5">
+      विद्या ददाति विनयम्
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Admin Portal | {{ school_name }}{% endblock %}</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/logo.svg') }}">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+</head>
+<body>
+
+<div class="admin-layout">
+  <!-- Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="admin-brand">
+      <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Sanskar Emblem">
+      <div class="admin-brand-info">
+        <h3>Sanskar Admin</h3>
+        <span>Management Hub</span>
+      </div>
+    </div>
+
+    <nav class="admin-nav">
+      <a href="{{ url_for('admin.dashboard') }}" class="admin-nav-item {% if request.endpoint == 'admin.dashboard' %}active{% endif %}">
+        <i class="fas fa-tachometer-alt"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="{{ url_for('admin.admissions') }}" class="admin-nav-item {% if request.endpoint == 'admin.admissions' %}active{% endif %}">
+        <i class="fas fa-user-graduate"></i>
+        <span>Admissions</span>
+      </a>
+      <a href="{{ url_for('admin.inquiries') }}" class="admin-nav-item {% if request.endpoint == 'admin.inquiries' %}active{% endif %}">
+        <i class="fas fa-envelope-open-text"></i>
+        <span>Inquiries</span>
+      </a>
+      <a href="{{ url_for('admin.news') }}" class="admin-nav-item {% if request.endpoint == 'admin.news' %}active{% endif %}">
+        <i class="fas fa-newspaper"></i>
+        <span>News & Notices</span>
+      </a>
+      <a href="{{ url_for('admin.events') }}" class="admin-nav-item {% if request.endpoint == 'admin.events' %}active{% endif %}">
+        <i class="fas fa-calendar-alt"></i>
+        <span>Events</span>
+      </a>
+      <a href="{{ url_for('admin.faculty') }}" class="admin-nav-item {% if request.endpoint == 'admin.faculty' %}active{% endif %}">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <span>Faculty</span>
+      </a>
+      <a href="{{ url_for('admin.gallery') }}" class="admin-nav-item {% if request.endpoint == 'admin.gallery' %}active{% endif %}">
+        <i class="fas fa-images"></i>
+        <span>Gallery</span>
+      </a>
+      <a href="{{ url_for('admin.faqs') }}" class="admin-nav-item {% if request.endpoint == 'admin.faqs' %}active{% endif %}">
+        <i class="fas fa-question-circle"></i>
+        <span>FAQs</span>
+      </a>
+      <a href="{{ url_for('admin.downloads') }}" class="admin-nav-item {% if request.endpoint == 'admin.downloads' %}active{% endif %}">
+        <i class="fas fa-file-download"></i>
+        <span>Downloads</span>
+      </a>
+      <a href="{{ url_for('admin.settings') }}" class="admin-nav-item {% if request.endpoint == 'admin.settings' %}active{% endif %}">
+        <i class="fas fa-cogs"></i>
+        <span>Website Settings</span>
+      </a>
+    </nav>
+
+    <div class="admin-sidebar-footer">
+      <div class="admin-user-profile">
+        <div class="admin-user-info">
+          <span class="admin-user-name">{{ current_user.username }}</span>
+          <span class="admin-user-role">{{ current_user.role|title }}</span>
+        </div>
+        <a href="{{ url_for('main.logout') }}" class="admin-logout-btn" title="Sign Out">
+          <i class="fas fa-power-off"></i>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="admin-main">
+    <header class="admin-topbar">
+      <div class="admin-page-title">
+        <h1>{% block page_title %}Dashboard{% endblock %}</h1>
+      </div>
+      <div class="admin-topbar-actions">
+        <a href="{{ url_for('main.index') }}" target="_blank" class="btn-view-site">
+          <i class="fas fa-globe"></i>
+          <span>View Public Site</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Flash Messages inside Admin -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      <div style="padding: 16px 32px 0;">
+        {% for category, message in messages %}
+        <div class="flash-message flash-{{ category }}">
+          <span>{{ message }}</span>
+          <button type="button" onclick="this.parentElement.remove()" style="background:none;border:none;cursor:pointer;">&times;</button>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    {% endwith %}
+
+    <main class="admin-body">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

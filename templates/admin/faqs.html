@@ -1,0 +1,77 @@
+{% extends 'admin/base.html' %}
+
+{% block page_title %}Manage FAQs{% endblock %}
+
+{% block content %}
+<div style="display:grid;grid-template-columns:1.5fr 1fr;gap:30px;align-items:start;">
+  <div class="admin-card">
+    <div class="admin-card-header">
+      <h2>Published FAQs ({{ faqs|length }})</h2>
+    </div>
+    <div class="admin-table-container">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Question</th>
+            <th>Category</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for faq in faqs %}
+          <tr>
+            <td>
+              <div style="font-weight:700;color:var(--primary-dark);">{{ faq.question }}</div>
+              <div style="font-size:0.75rem;color:var(--text-muted);margin-top:2px;">{{ faq.answer[:85] }}...</div>
+            </td>
+            <td>
+              <span class="status-badge badge-pending">{{ faq.category }}</span>
+            </td>
+            <td>
+              <form method="POST" action="{{ url_for('admin.delete_faq', id=faq.id) }}" class="form-delete-confirm" data-item-title="this question">
+                <button type="submit" class="btn" style="background:#FCE8E6;color:#C5221F;padding:4px 8px;font-size:0.75rem;border-radius:var(--radius-sm);" title="Delete">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="admin-card" style="padding:24px;">
+    <h3 style="font-size:1.2rem;font-weight:800;color:var(--primary-dark);margin-bottom:18px;">
+      <i class="fas fa-question" style="color:var(--primary-green);"></i> Add FAQ Entry
+    </h3>
+    <form method="POST" action="{{ url_for('admin.add_faq') }}">
+      <div class="form-group">
+        <label class="form-label required">Category</label>
+        <select name="category" class="form-control" required>
+          <option value="Admissions">Admissions</option>
+          <option value="Academics">Academics</option>
+          <option value="Fees & Payments">Fees & Payments</option>
+          <option value="Transport">Transport</option>
+          <option value="Facilities">Facilities</option>
+          <option value="General">General</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label required">Question</label>
+        <input type="text" name="question" class="form-control" placeholder="e.g. Is school transport mandatory?" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label required">Detailed Answer</label>
+        <textarea name="answer" rows="4" class="form-control" placeholder="Clear, transparent answer for parents" required></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width:100%;padding:10px;font-size:0.92rem;">
+        Add FAQ
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

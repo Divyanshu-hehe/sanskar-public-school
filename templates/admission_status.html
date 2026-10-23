@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block title %}Track Admission Application Status | {{ school_name }}{% endblock %}
+
+{% block content %}
+<!-- Page Banner -->
+<div class="page-banner">
+  <div class="container">
+    <div>
+      <h1 class="page-banner-title">Admission Application Status</h1>
+      <p class="page-banner-subtitle">Enter your unique reference number to check the live status of your application.</p>
+    </div>
+    <div class="breadcrumb">
+      <a href="{{ url_for('main.index') }}">Home</a>
+      <span>/</span>
+      <a href="{{ url_for('main.admissions') }}">Admissions</a>
+      <span>/</span>
+      <span>Track Status</span>
+    </div>
+  </div>
+</div>
+
+<section style="padding: 70px 0; background: var(--cream);">
+  <div class="container" style="max-width: 760px;">
+    <!-- Lookup Form -->
+    <div style="background:var(--white);padding:36px;border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:1px solid var(--border-light);margin-bottom:36px;">
+      <h3 style="font-size:1.3rem;font-weight:700;color:var(--primary-dark);margin-bottom:16px;">
+        <i class="fas fa-search" style="color:var(--gold);"></i> Search Application by Reference Number
+      </h3>
+      <form method="GET" action="{{ url_for('main.admission_status') }}" style="display:flex;gap:12px;flex-wrap:wrap;">
+        <input type="text" name="app_num" value="{{ searched_app_num }}" class="form-control" style="flex:1;min-width:240px;" placeholder="e.g. SPS-2026-1001" required>
+        <button type="submit" class="btn btn-primary" style="padding:12px 24px;">
+          <span>Check Status</span>
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </form>
+      <div style="font-size:0.82rem;color:var(--text-light);margin-top:10px;">
+        Sample reference numbers for testing: <code>SPS-2026-1001</code>, <code>SPS-2026-1002</code>
+      </div>
+    </div>
+
+    <!-- Application Status Result Card -->
+    {% if application %}
+    <div style="background:var(--white);padding:36px;border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:2px solid var(--primary-green);animation:fadeIn 0.3s ease;">
+      <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border-light);padding-bottom:18px;margin-bottom:20px;flex-wrap:wrap;gap:12px;">
+        <div>
+          <span style="font-size:0.8rem;font-weight:700;color:var(--text-light);text-transform:uppercase;">Application Reference</span>
+          <h2 style="font-size:1.8rem;font-weight:800;color:var(--primary-dark);font-family:monospace;">{{ application.application_number }}</h2>
+        </div>
+        <div>
+          {% if application.status == 'Approved' %}
+          <span style="background:#E6F4EA;color:#137333;font-weight:800;padding:6px 16px;border-radius:var(--radius-full);font-size:0.9rem;border:1px solid #CEEAD6;">
+            <i class="fas fa-check-circle"></i> Approved
+          </span>
+          {% elif application.status == 'Under Review' %}
+          <span style="background:#E8F0FE;color:#1A73E8;font-weight:800;padding:6px 16px;border-radius:var(--radius-full);font-size:0.9rem;border:1px solid #D2E3FC;">
+            <i class="fas fa-spinner fa-spin"></i> Under Review
+          </span>
+          {% elif application.status == 'Rejected' %}
+          <span style="background:#FCE8E6;color:#C5221F;font-weight:800;padding:6px 16px;border-radius:var(--radius-full);font-size:0.9rem;border:1px solid #FAD2CF;">
+            <i class="fas fa-times-circle"></i> Rejected
+          </span>
+          {% else %}
+          <span style="background:#FEF7E0;color:#B06000;font-weight:800;padding:6px 16px;border-radius:var(--radius-full);font-size:0.9rem;border:1px solid #FEEFC3;">
+            <i class="fas fa-clock"></i> Pending Initial Screening
+          </span>
+          {% endif %}
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;font-size:0.95rem;margin-bottom:24px;">
+        <div><strong>Student Name:</strong> {{ application.student_name }}</div>
+        <div><strong>Class Applied:</strong> {{ application.grade_applying }}</div>
+        <div><strong>Parent / Guardian:</strong> {{ application.parent_name }} ({{ application.relationship }})</div>
+        <div><strong>Contact Mobile:</strong> {{ application.phone }}</div>
+        <div><strong>Submission Date:</strong> {{ application.created_at.strftime('%d %B, %Y') if application.created_at else 'Recent' }}</div>
+        <div><strong>Registered Email:</strong> {{ application.email }}</div>
+      </div>
+
+      <div style="background:var(--cream);border-radius:var(--radius-sm);padding:20px;border-left:4px solid var(--gold);margin-bottom:24px;">
+        <h4 style="font-size:0.95rem;font-weight:700;color:var(--primary-dark);margin-bottom:6px;">
+          <i class="fas fa-comment-dots"></i> Official Admissions Desk Remarks:
+        </h4>
+        <p style="font-size:0.92rem;color:var(--text-muted);line-height:1.6;">
+          {{ application.admin_remarks or 'Your application has been received and logged. Our admission committee will contact you regarding document verification and interaction scheduling.' }}
+        </p>
+      </div>
+
+      <div style="text-align:center;">
+        <a href="tel:{{ school_phone }}" class="btn btn-outline" style="font-size:0.88rem;padding:8px 20px;">
+          <i class="fas fa-phone-alt"></i> Need Help? Call Admissions Desk: {{ school_phone }}
+        </a>
+      </div>
+    </div>
+    {% elif searched_app_num %}
+    <div style="background:var(--white);padding:40px;border-radius:var(--radius-lg);text-align:center;border:1px solid #FAD2CF;">
+      <i class="fas fa-exclamation-triangle" style="font-size:3rem;color:var(--red-accent);margin-bottom:14px;"></i>
+      <h3 style="font-size:1.3rem;color:var(--primary-dark);margin-bottom:8px;">No Application Found</h3>
+      <p style="color:var(--text-muted);font-size:0.95rem;margin-bottom:20px;">
+        No record matches the reference number <strong>"{{ searched_app_num }}"</strong>. Please verify the code or contact our front desk.
+      </p>
+      <a href="{{ url_for('main.admissions') }}#apply-form-section" class="btn btn-primary">Submit New Application</a>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

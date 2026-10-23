@@ -1,0 +1,99 @@
+{% extends 'admin/base.html' %}
+
+{% block page_title %}Admission Applications ({{ applications|length }}){% endblock %}
+
+{% block content %}
+<div class="admin-card">
+  <!-- Filter & Search Bar -->
+  <div class="admin-filters-bar">
+    <div class="filter-pills">
+      {% for st in ['All', 'Pending', 'Under Review', 'Approved', 'Rejected'] %}
+      <a href="{{ url_for('admin.admissions', status=st, search=search) }}" class="filter-pill {% if current_status == st %}active{% endif %}">
+        {{ st }}
+      </a>
+      {% endfor %}
+    </div>
+
+    <form method="GET" action="{{ url_for('admin.admissions') }}" style="display:flex;gap:8px;">
+      <input type="hidden" name="status" value="{{ current_status }}">
+      <input type="text" name="search" value="{{ search }}" placeholder="Search by name, app no, phone..." class="form-control" style="width:260px;padding:6px 12px;font-size:0.85rem;">
+      <button type="submit" class="btn btn-primary" style="padding:6px 14px;font-size:0.85rem;"><i class="fas fa-search"></i></button>
+    </form>
+  </div>
+
+  <!-- Table of Applications -->
+  <div class="admin-table-container">
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Ref. No</th>
+          <th>Student Details</th>
+          <th>Class</th>
+          <th>Parent Info</th>
+          <th>Address / Prior School</th>
+          <th>Status & Remarks</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for app in applications %}
+        <tr>
+          <td>
+            <div style="font-family:monospace;font-weight:800;color:var(--primary-green);font-size:1rem;">
+              {{ app.application_number }}
+            </div>
+            <div style="font-size:0.75rem;color:var(--text-light);">{{ app.created_at.strftime('%d %b %Y, %H:%M') if app.created_at else '' }}</div>
+          </td>
+          <td>
+            <div style="font-weight:700;font-size:0.95rem;color:var(--primary-dark);">{{ app.student_name }}</div>
+            <div style="font-size:0.8rem;color:var(--text-muted);">DOB: {{ app.dob }} | Gender: {{ app.gender }}</div>
+          </td>
+          <td>
+            <span style="font-weight:700;background:var(--primary-surface);color:var(--primary-green);padding:3px 10px;border-radius:var(--radius-full);font-size:0.8rem;">
+              {{ app.grade_applying }}
+            </span>
+          </td>
+          <td>
+            <div><strong>{{ app.parent_name }}</strong> ({{ app.relationship }})</div>
+            <div style="font-size:0.8rem;color:var(--text-muted);"><i class="fas fa-phone-alt"></i> {{ app.phone }}</div>
+            <div style="font-size:0.8rem;color:var(--text-muted);"><i class="fas fa-envelope"></i> {{ app.email }}</div>
+          </td>
+          <td style="max-width:220px;font-size:0.82rem;color:var(--text-muted);">
+            <div>{{ app.address }}</div>
+            {% if app.previous_school %}
+            <div style="color:var(--primary-dark);font-weight:600;margin-top:4px;">Prior: {{ app.previous_school }} ({{ app.previous_percentage }})</div>
+            {% endif %}
+          </td>
+          <td>
+            <form method="POST" action="{{ url_for('admin.update_admission_status', id=app.id) }}" style="display:flex;flex-direction:column;gap:6px;">
+              <select name="status" class="form-control" style="padding:4px 8px;font-size:0.8rem;" onchange="this.form.submit()">
+                <option value="Pending" {% if app.status == 'Pending' %}selected{% endif %}>Pending</option>
+                <option value="Under Review" {% if app.status == 'Under Review' %}selected{% endif %}>Under Review</option>
+                <option value="Approved" {% if app.status == 'Approved' %}selected{% endif %}>Approved</option>
+                <option value="Rejected" {% if app.status == 'Rejected' %}selected{% endif %}>Rejected</option>
+              </select>
+              <input type="text" name="admin_remarks" value="{{ app.admin_remarks or '' }}" placeholder="Counselor notes..." class="form-control" style="padding:4px 8px;font-size:0.75rem;" onblur="this.form.submit()">
+            </form>
+          </td>
+          <td>
+            <form method="POST" action="{{ url_for('admin.delete_admission', id=app.id) }}" class="form-delete-confirm" data-item-title="{{ app.student_name }} ({{ app.application_number }})">
+              <button type="submit" class="btn" style="background:#FCE8E6;color:#C5221F;padding:4px 8px;font-size:0.78rem;border-radius:var(--radius-sm);" title="Delete Application">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+
+        {% if applications|length == 0 %}
+        <tr>
+          <td colspan="7" style="text-align:center;padding:40px;color:var(--text-muted);">
+            No applications found matching the selected status or filter.
+          </td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

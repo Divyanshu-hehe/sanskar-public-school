@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block title %}World-Class Facilities & Infrastructure | {{ school_name }}{% endblock %}
+
+{% block content %}
+<!-- Page Banner -->
+<div class="page-banner">
+  <div class="container">
+    <div>
+      <h1 class="page-banner-title">Our Campus Facilities</h1>
+      <p class="page-banner-subtitle">A modern, secure and eco-friendly ecosystem built for experiential discovery.</p>
+    </div>
+    <div class="breadcrumb">
+      <a href="{{ url_for('main.index') }}">Home</a>
+      <span>/</span>
+      <span>Facilities</span>
+    </div>
+  </div>
+</div>
+
+<section style="padding: 70px 0; background: var(--white);">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag"><i class="fas fa-cubes"></i> Modern Infrastructure</span>
+      <h2 class="section-title">Designed to Empower Every Learner</h2>
+      <p class="section-desc">Explore the purpose-built learning spaces and student amenities across our sprawling green campus.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:36px;">
+      <!-- Facility 1: Smart Classrooms -->
+      <div style="background:var(--cream);border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--border-light);box-shadow:var(--shadow-sm);">
+        <div style="height:260px;overflow:hidden;">
+          <img src="{{ url_for('static', filename='images/hero/hero_classroom.jpg') }}" alt="Spacious Classrooms" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div style="padding:28px;">
+          <h3 style="font-size:1.4rem;font-weight:800;color:var(--primary-dark);margin-bottom:10px;">
+            <i class="fas fa-chalkboard" style="color:var(--primary-green);margin-right:8px;"></i> Spacious Smart Classrooms
+          </h3>
+          <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.7;">
+            Air-cooled, ergonomically designed classrooms featuring natural sunlight, interactive touch boards, high-speed audio-visual aids, and comfortable seating that accommodates up to 35 students per section for optimal teacher-student engagement.
+          </p>
+        </div>
+      </div>
+
+      <!-- Facility 2: Science Laboratories -->
+      <div style="background:var(--cream);border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--border-light);box-shadow:var(--shadow-sm);">
+        <div style="height:260px;overflow:hidden;">
+          <img src="{{ url_for('static', filename='images/facilities/science_lab.jpg') }}" alt="Advanced Science Labs" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div style="padding:28px;">
+          <h3 style="font-size:1.4rem;font-weight:800;color:var(--primary-dark);margin-bottom:10px;">
+            <i class="fas fa-flask" style="color:var(--primary-green);margin-right:8px;"></i> Advanced Science Laboratories
+          </h3>
+          <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.7;">
+            Dedicated, fully equipped Physics, Chemistry, and Biology laboratories compliant with CBSE safety standards. Students engage in practical demonstrations with precision microscopes, glass apparatus, optical benches, and chemical workbenches.
+          </p>
+        </div>
+      </div>
+
+      <!-- Facility 3: Central Library -->
+      <div style="background:var(--cream);border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--border-light);box-shadow:var(--shadow-sm);">
+        <div style="height:260px;overflow:hidden;">
+          <img src="{{ url_for('static', filename='images/facilities/library.jpg') }}" alt="School Library" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div style="padding:28px;">
+          <h3 style="font-size:1.4rem;font-weight:800;color:var(--primary-dark);margin-bottom:10px;">
+            <i class="fas fa-book-reader" style="color:var(--primary-green);margin-right:8px;"></i> Central Knowledge Library
+          </h3>
+          <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.7;">
+            A haven of quiet study boasting over 15,000 fiction and non-fiction titles, reference encyclopedias, national research periodicals, and an automated e-learning section with kindle e-readers and high-speed internet access.
+          </p>
+        </div>
+      </div>
+
+      <!-- Facility 4: Computer & STEM Lab -->
+      <div style="background:var(--cream);border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--border-light);box-shadow:var(--shadow-sm);">
+        <div style="height:260px;overflow:hidden;">
+          <img src="{{ url_for('static', filename='images/facilities/computer_lab.jpg') }}" alt="Computer & Coding Lab" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div style="padding:28px;">
+          <h3 style="font-size:1.4rem;font-weight:800;color:var(--primary-dark);margin-bottom:10px;">
+            <i class="fas fa-laptop-code" style="color:var(--primary-green);margin-right:8px;"></i> Computer & AI Innovation Lab
+          </h3>
+          <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.7;">
+            Equipped with high-performance desktop terminals, gigabit fiber broadband, robotics microcontrollers (Arduino/Raspberry Pi), and industry-standard coding platforms where students learn Python, Scratch, and digital design.
+          </p>
+        </div>
+      </div>
+
+      <!-- Facility 5: Sports Arena -->
+      <div style="background:var(--cream);border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--border-light);box-shadow:var(--shadow-sm);">
+        <div style="height:260px;overflow:hidden;">
+          <img src="{{ url_for('static', filename='images/facilities/sports.jpg') }}" alt="Sports Arena" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div style="padding:28px;">
+          <h3 style="font-size:1.4rem;font-weight:800;color:var(--primary-dark);margin-bottom:10px;">
+            <i class="fas fa-running" style="color:var(--primary-green);margin-right:8px;"></i> Sports Arena & Athletic Complex
+          </h3>
+          <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.7;">
+            A multi-sport complex comprising a 200m running track, regulation football ground, cricket nets, basketball and volleyball courts, table tennis hall, and yoga pavilion overseen by NIS-qualified physical instructors.
+          </p>
+        </div>
+      </div>
+
+      <!-- Facility 6: Safety, Transport & Amenities -->
+      <div style="background:var(--cream);border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--border-light);box-shadow:var(--shadow-sm);">
+        <div style="height:260px;overflow:hidden;">
+          <img src="{{ url_for('static', filename='images/campus/campus_building.jpg') }}" alt="Campus Safety and Bus Transport" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div style="padding:28px;">
+          <h3 style="font-size:1.4rem;font-weight:800;color:var(--primary-dark);margin-bottom:10px;">
+            <i class="fas fa-shield-alt" style="color:var(--primary-green);margin-right:8px;"></i> Campus Safety, GPS Buses & Health
+          </h3>
+          <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.7;">
+            Gated security with 24/7 CCTV surveillance, fire-safety certified infrastructure, pure RO drinking water coolers on every floor, modern hygiene-sanitized restrooms, GPS bus fleet, and on-campus medical infirmary with resident nurse.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

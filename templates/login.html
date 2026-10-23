@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Administrator Portal Login | {{ school_name }}{% endblock %}
+
+{% block content %}
+<section style="min-height: 80vh; display: flex; align-items: center; justify-content: center; padding: 60px 20px; background: linear-gradient(135deg, #F8F7F0 0%, #E8F0EB 100%);">
+  <div style="background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);border:1px solid var(--border-light);max-width:440px;width:100%;padding:40px 36px;text-align:center;">
+    <!-- Brand Logo -->
+    <div style="width:70px;height:70px;margin:0 auto 16px;">
+      <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Sanskar Logo" style="width:100%;height:100%;object-fit:contain;">
+    </div>
+    <h2 style="font-family:var(--font-heading);font-size:1.5rem;font-weight:800;color:var(--primary-dark);margin-bottom:4px;">
+      Administrative Portal
+    </h2>
+    <p style="color:var(--text-muted);font-size:0.88rem;margin-bottom:28px;">
+      Secure login for authorized school administration and coordinators.
+    </p>
+
+    <!-- Login Form -->
+    <form method="POST" action="{{ url_for('main.login') }}" style="text-align:left;">
+      <div class="form-group">
+        <label class="form-label" for="username">Username or Admin Email</label>
+        <div style="position:relative;">
+          <input type="text" id="username" name="username" class="form-control" style="padding-left:40px;" placeholder="admin or email" required autofocus>
+          <i class="fas fa-user" style="position:absolute;left:14px;top:15px;color:var(--text-light);font-size:0.95rem;"></i>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="password">Password</label>
+        <div style="position:relative;">
+          <input type="password" id="password" name="password" class="form-control" style="padding-left:40px;" placeholder="••••••••" required>
+          <i class="fas fa-lock" style="position:absolute;left:14px;top:15px;color:var(--text-light);font-size:0.95rem;"></i>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;font-size:0.85rem;">
+        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;color:var(--text-dark);">
+          <input type="checkbox" name="remember" value="1" style="accent-color:var(--primary-green);"> Remember session
+        </label>
+        <a href="{{ url_for('main.contact') }}" style="color:var(--primary-green);font-weight:600;">Lost password?</a>
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width:100%;padding:14px;font-size:1rem;">
+        <i class="fas fa-sign-in-alt"></i>
+        <span>Sign In to Dashboard</span>
+      </button>
+    </form>
+
+    <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border-light);font-size:0.8rem;color:var(--text-light);">
+      <i class="fas fa-shield-alt" style="color:var(--primary-green);"></i> Default Admin: <code>admin</code> / <code>Admin@Sanskar2026!</code>
+    </div>
+  </div>
+</section>
+{% endblock %}

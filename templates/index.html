@@ -1,0 +1,451 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ school_name }} — Nurturing Knowledge. Building Character.{% endblock %}
+
+{% block content %}
+<!-- ==========================================================================
+     HERO SECTION
+     ========================================================================== -->
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-grid">
+      <!-- Left Content -->
+      <div class="hero-content">
+        <div class="hero-pill-badge">
+          <i class="fas fa-award"></i>
+          <span>Admissions Open for Session {{ settings.get('academic_year', '2026 – 2027') }}</span>
+        </div>
+        <h1 class="hero-title">
+          <span>Nurturing</span>
+          <span class="hero-title-dark">Knowledge.</span>
+          <span class="hero-title-gold">Building Character.</span>
+        </h1>
+        <p class="hero-description">
+          At Sanskar Public School, we believe in holistic education that empowers every child with knowledge, values and confidence to build a better tomorrow.
+        </p>
+        <div class="hero-cta-group">
+          <a href="{{ url_for('main.admissions') }}" class="btn btn-primary">
+            <span>Apply for Admission</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+          <a href="{{ url_for('main.about') }}" class="btn btn-outline" style="border-radius: var(--radius-full);">
+            <i class="fas fa-play" style="font-size: 0.8rem; color: var(--primary-green);"></i>
+            <span>Explore Our School</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Image Frame with Floating Badge -->
+      <div class="hero-image-wrapper">
+        <div class="hero-image-frame">
+          <img src="{{ url_for('static', filename='images/hero/hero_classroom.jpg') }}" alt="School students studying attentively in Sanskar Public School classroom">
+        </div>
+        <!-- Floating Yellow Stamp Badge matching mockup -->
+        <div class="hero-stamp-badge">
+          <div>Better Students</div>
+          <div>Brighter Tomorrows</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     QUICK ACCESS FLOATING CARDS BAR
+     ========================================================================== -->
+<div class="container quick-access-bar">
+  <div class="quick-cards-grid">
+    <!-- Card 1: Admissions -->
+    <a href="{{ url_for('main.admissions') }}" class="quick-card">
+      <div class="quick-icon-wrap icon-red">
+        <i class="fas fa-user-graduate"></i>
+      </div>
+      <span class="quick-card-title">Admissions</span>
+      <span class="quick-card-action">Apply Now</span>
+    </a>
+
+    <!-- Card 2: Academic Calendar -->
+    <a href="{{ url_for('main.parent_resources') }}#calendar" class="quick-card">
+      <div class="quick-icon-wrap icon-orange">
+        <i class="fas fa-calendar-alt"></i>
+      </div>
+      <span class="quick-card-title">Academic Calendar</span>
+      <span class="quick-card-action">View Schedule</span>
+    </a>
+
+    <!-- Card 3: Fee Structure -->
+    <a href="{{ url_for('main.parent_resources') }}#fees" class="quick-card">
+      <div class="quick-icon-wrap icon-yellow">
+        <i class="fas fa-file-invoice-dollar"></i>
+      </div>
+      <span class="quick-card-title">Fee Structure</span>
+      <span class="quick-card-action">Know More</span>
+    </a>
+
+    <!-- Card 4: Downloads -->
+    <a href="{{ url_for('main.parent_resources') }}#downloads" class="quick-card">
+      <div class="quick-icon-wrap icon-green">
+        <i class="fas fa-cloud-download-alt"></i>
+      </div>
+      <span class="quick-card-title">Downloads</span>
+      <span class="quick-card-action">Forms & Documents</span>
+    </a>
+
+    <!-- Card 5: Parent Portal -->
+    <a href="{{ url_for('main.parent_resources') }}#portal" class="quick-card">
+      <div class="quick-icon-wrap icon-teal">
+        <i class="fas fa-users-cog"></i>
+      </div>
+      <span class="quick-card-title">Parent Portal</span>
+      <span class="quick-card-action">Login Here</span>
+    </a>
+
+    <!-- Card 6: Virtual Tour -->
+    <a href="{{ url_for('main.facilities') }}" class="quick-card">
+      <div class="quick-icon-wrap icon-blue">
+        <i class="fas fa-school"></i>
+      </div>
+      <span class="quick-card-title">Virtual Tour</span>
+      <span class="quick-card-action">Explore Campus</span>
+    </a>
+  </div>
+</div>
+
+<!-- ==========================================================================
+     ABOUT SANSKAR PUBLIC SCHOOL SECTION (WITH STATS)
+     ========================================================================== -->
+<section class="about-preview-section">
+  <div class="container">
+    <div class="about-preview-grid">
+      <!-- Left Column: Text & CTA -->
+      <div class="about-preview-text">
+        <span class="section-tag"><i class="fas fa-shield-alt"></i> Welcome To Sanskar</span>
+        <h2>About Sanskar Public School</h2>
+        <p>
+          Sanskar Public School is committed to providing quality education with strong moral values, so that every student grows into a responsible, confident and compassionate individual. We focus on academic excellence, character building and all-round development in a safe and supportive environment.
+        </p>
+        <a href="{{ url_for('main.about') }}" class="btn btn-primary">
+          <span>Know More About Us</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Center Column: Campus Architecture Image -->
+      <div class="about-preview-image">
+        <img src="{{ url_for('static', filename='images/campus/campus_building.jpg') }}" alt="Sanskar Public School Main Building Campus">
+      </div>
+
+      <!-- Right Column: 2x2 Stats Grid -->
+      <div class="about-stats-grid">
+        <div class="stat-box">
+          <div class="stat-icon gold">
+            <i class="fas fa-user-friends"></i>
+          </div>
+          <div>
+            <div class="stat-number">{{ settings.get('stat_students', '1000+') }}</div>
+            <div class="stat-label">Happy Students</div>
+          </div>
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-icon green">
+            <i class="fas fa-chalkboard-teacher"></i>
+          </div>
+          <div>
+            <div class="stat-number">{{ settings.get('stat_faculty', '50+') }}</div>
+            <div class="stat-label">Dedicated Faculty</div>
+          </div>
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-icon gold">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <div>
+            <div class="stat-number">{{ settings.get('stat_excellence', '25+') }}</div>
+            <div class="stat-label">Years of Excellence</div>
+          </div>
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-icon green">
+            <i class="fas fa-star"></i>
+          </div>
+          <div>
+            <div class="stat-number">{{ settings.get('stat_values', '100%') }}</div>
+            <div class="stat-label">Focus on Values</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     ACADEMIC PROGRAMS SECTION
+     ========================================================================== -->
+<section class="academics-section">
+  <div class="container">
+    <div class="academics-header-flex">
+      <div>
+        <span class="section-tag"><i class="fas fa-graduation-cap"></i> Educational Wings</span>
+        <h2 class="section-title">Our Academic Programs</h2>
+      </div>
+      <a href="{{ url_for('main.academics') }}" class="btn-outline btn" style="padding: 8px 20px; font-size: 0.88rem;">
+        <span>View Detailed Curriculum</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+
+    <div class="academic-cards-grid">
+      <!-- 1. Pre-Primary -->
+      <div class="academic-program-card">
+        <div class="academic-card-img">
+          <img src="{{ url_for('static', filename='images/academic/pre_primary.jpg') }}" alt="Pre-Primary wing at Sanskar Public School">
+        </div>
+        <div class="academic-card-body">
+          <div class="academic-badge-level">
+            <div class="level-icon-circle bg-yellow"><i class="fas fa-shapes"></i></div>
+            <span class="academic-card-title">Pre-Primary</span>
+          </div>
+          <div class="academic-card-tagline">Play • Learn • Grow</div>
+          <div class="academic-card-grades">Nursery – UKG</div>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 14px;">
+            Child-centric sensory learning, phonetics, and creative play in a nurturing kindergarten environment.
+          </p>
+          <a href="{{ url_for('main.academics') }}#pre-primary" class="academic-card-link">
+            <span>Learn More</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. Primary -->
+      <div class="academic-program-card">
+        <div class="academic-card-img">
+          <img src="{{ url_for('static', filename='images/academic/primary.jpg') }}" alt="Primary school students at Sanskar Public School">
+        </div>
+        <div class="academic-card-body">
+          <div class="academic-badge-level">
+            <div class="level-icon-circle bg-green"><i class="fas fa-book-reader"></i></div>
+            <span class="academic-card-title">Primary</span>
+          </div>
+          <div class="academic-card-tagline">Building Strong Foundations</div>
+          <div class="academic-card-grades">Class 1 – 5</div>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 14px;">
+            Core competencies in languages, mathematics, environmental studies, and foundational moral values.
+          </p>
+          <a href="{{ url_for('main.academics') }}#primary" class="academic-card-link">
+            <span>Learn More</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 3. Middle School -->
+      <div class="academic-program-card">
+        <div class="academic-card-img">
+          <img src="{{ url_for('static', filename='images/academic/middle_school.jpg') }}" alt="Middle school class activities">
+        </div>
+        <div class="academic-card-body">
+          <div class="academic-badge-level">
+            <div class="level-icon-circle bg-red"><i class="fas fa-compass"></i></div>
+            <span class="academic-card-title">Middle School</span>
+          </div>
+          <div class="academic-card-tagline">Exploring Possibilities</div>
+          <div class="academic-card-grades">Class 6 – 8</div>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 14px;">
+            Inquiry-based scientific exploration, analytical reasoning, collaborative projects, and digital literacy.
+          </p>
+          <a href="{{ url_for('main.academics') }}#middle" class="academic-card-link">
+            <span>Learn More</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 4. Senior Secondary -->
+      <div class="academic-program-card">
+        <div class="academic-card-img">
+          <img src="{{ url_for('static', filename='images/academic/senior_secondary.jpg') }}" alt="Senior secondary STEM laboratory">
+        </div>
+        <div class="academic-card-body">
+          <div class="academic-badge-level">
+            <div class="level-icon-circle bg-teal"><i class="fas fa-user-tie"></i></div>
+            <span class="academic-card-title">Senior Secondary</span>
+          </div>
+          <div class="academic-card-tagline">Preparing for Tomorrow</div>
+          <div class="academic-card-grades">Class 9 – 12</div>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 14px;">
+            Specialized Science, Commerce, and Humanities streams with career counseling and competitive exam mentorship.
+          </p>
+          <a href="{{ url_for('main.academics') }}#senior" class="academic-card-link">
+            <span>Learn More</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     WORLD-CLASS FACILITIES STRIP
+     ========================================================================== -->
+<section class="facilities-strip-section">
+  <div class="container">
+    <div class="academics-header-flex">
+      <div>
+        <span class="section-tag"><i class="fas fa-landmark"></i> Infrastructure</span>
+        <h2 class="section-title">World-Class Facilities</h2>
+      </div>
+      <a href="{{ url_for('main.facilities') }}" class="btn-outline btn" style="padding: 8px 20px; font-size: 0.88rem;">
+        <span>View All Facilities</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+
+    <div class="facilities-strip-grid">
+      <!-- 1. Classrooms -->
+      <div class="facility-mini-card">
+        <div class="facility-mini-img">
+          <img src="{{ url_for('static', filename='images/hero/hero_classroom.jpg') }}" alt="Spacious Classrooms">
+        </div>
+        <div class="facility-mini-title">Spacious Classrooms</div>
+      </div>
+
+      <!-- 2. Science & Computer Labs -->
+      <div class="facility-mini-card">
+        <div class="facility-mini-img">
+          <img src="{{ url_for('static', filename='images/facilities/science_lab.jpg') }}" alt="Science & Computer Labs">
+        </div>
+        <div class="facility-mini-title">Science & Computer Labs</div>
+      </div>
+
+      <!-- 3. Library -->
+      <div class="facility-mini-card">
+        <div class="facility-mini-img">
+          <img src="{{ url_for('static', filename='images/facilities/library.jpg') }}" alt="Central Knowledge Library">
+        </div>
+        <div class="facility-mini-title">Central Library</div>
+      </div>
+
+      <!-- 4. Sports Facilities -->
+      <div class="facility-mini-card">
+        <div class="facility-mini-img">
+          <img src="{{ url_for('static', filename='images/facilities/sports.jpg') }}" alt="Sports Facilities">
+        </div>
+        <div class="facility-mini-title">Sports Facilities</div>
+      </div>
+
+      <!-- 5. Smart Learning -->
+      <div class="facility-mini-card">
+        <div class="facility-mini-img">
+          <img src="{{ url_for('static', filename='images/facilities/computer_lab.jpg') }}" alt="Smart Learning & Coding Lab">
+        </div>
+        <div class="facility-mini-title">Smart Learning</div>
+      </div>
+
+      <!-- 6. Safe Campus -->
+      <div class="facility-mini-card">
+        <div class="facility-mini-img">
+          <img src="{{ url_for('static', filename='images/campus/campus_building.jpg') }}" alt="Safe & Secure Campus">
+        </div>
+        <div class="facility-mini-title">Safe & Secure Campus</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     LATEST NEWS & UPCOMING EVENTS
+     ========================================================================== -->
+<section class="news-events-section">
+  <div class="container">
+    <div class="news-events-grid">
+      <!-- News Column -->
+      <div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
+          <h3 style="font-size:1.6rem;font-weight:800;color:var(--primary-dark);">Latest News & Notices</h3>
+          <a href="{{ url_for('main.news') }}" style="color:var(--primary-green);font-weight:700;font-size:0.88rem;">All News &rarr;</a>
+        </div>
+
+        {% for article in featured_news %}
+        <div class="news-card-featured">
+          <div class="news-card-featured-img">
+            <img src="{{ article.image_url or url_for('static', filename='images/hero/hero_classroom.jpg') }}" alt="{{ article.title }}">
+          </div>
+          <div class="news-card-featured-body">
+            <span class="news-category-badge">{{ article.category }}</span>
+            <h4 class="news-card-title"><a href="{{ url_for('main.news_detail', slug=article.slug) }}">{{ article.title }}</a></h4>
+            <p class="news-card-summary">{{ article.summary }}</p>
+            <div class="news-date">
+              <i class="far fa-calendar-alt"></i>
+              <span>{{ article.published_date }}</span>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- Events Column -->
+      <div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
+          <h3 style="font-size:1.6rem;font-weight:800;color:var(--primary-dark);">Upcoming Events</h3>
+          <a href="{{ url_for('main.news') }}#events" style="color:var(--primary-green);font-weight:700;font-size:0.88rem;">Calendar &rarr;</a>
+        </div>
+
+        {% for event in upcoming_events %}
+        <div class="event-item-card">
+          <div class="event-date-box">
+            <div class="event-date-day">{{ event.event_date.split(' ')[0] if event.event_date else '15' }}</div>
+            <div class="event-date-month">{{ event.event_date.split(' ')[1] if event.event_date else 'Nov' }}</div>
+          </div>
+          <div class="event-info">
+            <h4>{{ event.title }}</h4>
+            <div class="event-meta">
+              <span><i class="far fa-clock"></i> {{ event.event_time or '09:00 AM' }}</span>
+              <span><i class="fas fa-map-marker-alt"></i> {{ event.location }}</span>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+        <!-- Quick Help Card -->
+        <div style="background:var(--primary-surface);border:1px solid var(--border-light);border-radius:var(--radius-md);padding:24px;margin-top:28px;">
+          <h4 style="color:var(--primary-green);font-size:1.1rem;margin-bottom:8px;font-weight:700;"><i class="fas fa-headset"></i> Have Questions?</h4>
+          <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:14px;">
+            Speak directly with our front desk counselor or schedule a campus walkthrough.
+          </p>
+          <a href="tel:{{ school_phone }}" class="btn btn-primary" style="padding:8px 18px;font-size:0.85rem;width:100%;">
+            <i class="fas fa-phone-alt"></i> Call {{ school_phone }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     JOIN SANSKAR FAMILY CTA BANNER
+     ========================================================================== -->
+<section class="cta-banner-section">
+  <div class="container">
+    <div class="cta-banner-grid">
+      <div class="cta-content">
+        <h2>Join the Sanskar Family</h2>
+        <p>Give your child the right environment to learn, grow and shine with strong values and bright opportunities.</p>
+        <a href="{{ url_for('main.admissions') }}" class="btn btn-gold">
+          <span>Apply for Admission</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+      <div class="cta-image-wrapper">
+        <div class="cta-image-frame">
+          <img src="{{ url_for('static', filename='images/hero/hero_classroom.jpg') }}" alt="Sanskar Public School Students">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

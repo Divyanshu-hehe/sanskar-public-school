@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ school_name }} | {{ school_tagline }}{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}Official website of Sanskar Public School. Nurturing Knowledge, Building Character. Quality holistic education, modern facilities, and academic excellence.{% endblock %}">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="{{ school_name }}">
+  <meta property="og:description" content="{{ school_tagline }}">
+  <meta property="og:image" content="{{ url_for('static', filename='images/campus/campus_building.jpg', _external=True) }}">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/logo.svg') }}">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Google Fonts: Outfit, Plus Jakarta Sans, Cinzel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+  <!-- Top Information Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-left">
+        <div class="top-bar-item">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:{{ school_email }}">{{ school_email }}</a>
+        </div>
+        <span class="top-bar-divider">|</span>
+        <div class="top-bar-item">
+          <i class="fas fa-phone-alt"></i>
+          <a href="tel:{{ school_phone }}">{{ school_phone }}</a>
+        </div>
+        <span class="top-bar-divider">|</span>
+        <div class="top-bar-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Our School, Your Child's Bright Future</span>
+        </div>
+      </div>
+      <div class="top-bar-right">
+        <div class="top-bar-links">
+          <a href="{{ url_for('main.parent_resources') }}">Parent Portal</a>
+          <span class="top-bar-divider">|</span>
+          <a href="{{ url_for('main.contact') }}">Career</a>
+          <span class="top-bar-divider">|</span>
+          <a href="{{ url_for('main.faqs') }}">FAQ</a>
+          {% if current_user.is_authenticated %}
+          <span class="top-bar-divider">|</span>
+          <a href="{{ url_for('admin.dashboard') }}" style="color: var(--gold);"><i class="fas fa-user-shield"></i> Admin</a>
+          {% endif %}
+        </div>
+        <div class="top-bar-social">
+          <a href="{{ settings.get('facebook_url', '#') }}" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="{{ settings.get('instagram_url', '#') }}" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="{{ settings.get('youtube_url', '#') }}" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Announcement Ticker -->
+  {% if settings.get('ticker_announcement') %}
+  <div class="ticker-bar">
+    <div class="container" style="display:flex;align-items:center;">
+      <span class="ticker-badge"><i class="fas fa-bullhorn"></i> Notice</span>
+      <div class="ticker-marquee">
+        <span>{{ settings.get('ticker_announcement') }}</span>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Main Sticky Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="{{ url_for('main.index') }}" class="brand-wrapper" aria-label="Sanskar Public School Home">
+        <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Sanskar Public School Emblem" class="brand-logo-img">
+        <div class="brand-text">
+          <span class="school-title">{{ school_name }}</span>
+          <span class="school-sanskrit-motto">{{ school_motto }}</span>
+        </div>
+      </a>
+
+      <!-- Desktop & Mobile Navigation Menu -->
+      <nav class="nav-menu" id="primary-nav">
+        <button type="button" class="mobile-close-btn" aria-label="Close navigation menu">&times;</button>
+        <a href="{{ url_for('main.index') }}" class="nav-link {% if request.endpoint == 'main.index' %}active{% endif %}">Home</a>
+        <a href="{{ url_for('main.about') }}" class="nav-link {% if request.endpoint == 'main.about' %}active{% endif %}">About Us</a>
+        <a href="{{ url_for('main.academics') }}" class="nav-link {% if request.endpoint == 'main.academics' %}active{% endif %}">Academics</a>
+        <a href="{{ url_for('main.admissions') }}" class="nav-link {% if request.endpoint == 'main.admissions' %}active{% endif %}">Admissions</a>
+        <a href="{{ url_for('main.facilities') }}" class="nav-link {% if request.endpoint == 'main.facilities' %}active{% endif %}">Facilities</a>
+        <a href="{{ url_for('main.gallery') }}" class="nav-link {% if request.endpoint == 'main.gallery' %}active{% endif %}">Gallery</a>
+        <a href="{{ url_for('main.news') }}" class="nav-link {% if request.endpoint in ['main.news', 'main.news_detail'] %}active{% endif %}">News & Events</a>
+        <a href="{{ url_for('main.contact') }}" class="nav-link {% if request.endpoint == 'main.contact' %}active{% endif %}">Contact</a>
+      </nav>
+
+      <!-- Header Action Elements -->
+      <div class="nav-actions">
+        <a href="{{ url_for('main.admission_status') }}" class="search-trigger-btn" title="Track Application Status" aria-label="Track Admission Application Status">
+          <i class="fas fa-search"></i>
+        </a>
+        <a href="{{ url_for('main.admissions') }}" class="btn-apply-nav">
+          <span>Apply for Admission</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        <button type="button" class="mobile-menu-toggle" aria-label="Toggle mobile navigation menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Backdrop -->
+  <div class="nav-menu-backdrop"></div>
+
+  <!-- Flash Messages -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="flash-container">
+      {% for category, message in messages %}
+      <div class="flash-message flash-{{ category }}">
+        <span>{{ message }}</span>
+        <button type="button" onclick="this.parentElement.remove()" style="background:none;border:none;cursor:pointer;font-size:1.1rem;">&times;</button>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  {% endwith %}
+
+  <!-- Page Content -->
+  <main id="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <!-- Col 1: School Emblem & Motto -->
+        <div class="footer-col">
+          <div class="footer-brand-logo">
+            <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Sanskar Public School Logo">
+            <div>
+              <div class="footer-brand-title">{{ school_name }}</div>
+              <div class="footer-brand-motto">{{ school_motto }}</div>
+            </div>
+          </div>
+          <p class="footer-about-text">
+            Sanskar Public School is committed to providing value-based, holistic education that nurtures knowledge, character, intellectual curiosity, and human compassion.
+          </p>
+          <div class="footer-social-links">
+            <a href="{{ settings.get('facebook_url', '#') }}" class="footer-social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="{{ settings.get('instagram_url', '#') }}" class="footer-social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="{{ settings.get('youtube_url', '#') }}" class="footer-social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Quick Links</h4>
+          <ul class="footer-links-list">
+            <li><a href="{{ url_for('main.index') }}"><i class="fas fa-angle-right"></i> Home</a></li>
+            <li><a href="{{ url_for('main.about') }}"><i class="fas fa-angle-right"></i> About Us</a></li>
+            <li><a href="{{ url_for('main.academics') }}"><i class="fas fa-angle-right"></i> Academics</a></li>
+            <li><a href="{{ url_for('main.admissions') }}"><i class="fas fa-angle-right"></i> Admissions</a></li>
+            <li><a href="{{ url_for('main.faculty') }}"><i class="fas fa-angle-right"></i> Dedicated Faculty</a></li>
+            <li><a href="{{ url_for('main.student_life') }}"><i class="fas fa-angle-right"></i> Student Life</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Campus & Resources -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Resources & Campus</h4>
+          <ul class="footer-links-list">
+            <li><a href="{{ url_for('main.facilities') }}"><i class="fas fa-angle-right"></i> World-Class Facilities</a></li>
+            <li><a href="{{ url_for('main.gallery') }}"><i class="fas fa-angle-right"></i> Photo Gallery</a></li>
+            <li><a href="{{ url_for('main.news') }}"><i class="fas fa-angle-right"></i> News & Announcements</a></li>
+            <li><a href="{{ url_for('main.parent_resources') }}"><i class="fas fa-angle-right"></i> Parent Resources</a></li>
+            <li><a href="{{ url_for('main.admission_status') }}"><i class="fas fa-angle-right"></i> Track Application</a></li>
+            <li><a href="{{ url_for('main.faqs') }}"><i class="fas fa-angle-right"></i> FAQs</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact Information -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Contact Us</h4>
+          <div class="footer-contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>{{ school_address }}</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-phone-alt"></i>
+            <span><a href="tel:{{ school_phone }}">{{ school_phone }}</a></span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-envelope"></i>
+            <span><a href="mailto:{{ school_email }}">{{ school_email }}</a></span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-clock"></i>
+            <span>{{ settings.get('office_hours', 'Mon – Sat: 8:00 AM – 3:30 PM') }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <div>
+          &copy; {{ current_year }} {{ school_name }}. All Rights Reserved.
+        </div>
+        <div class="footer-legal-links">
+          <a href="{{ url_for('main.policies') }}">Privacy Policy</a>
+          <span>|</span>
+          <a href="{{ url_for('main.policies') }}#terms">Terms & Conditions</a>
+          <span>|</span>
+          <a href="{{ url_for('main.policies') }}#safeguarding">Child Safeguarding</a>
+          <span>|</span>
+          <a href="{{ url_for('main.login') }}">Admin Login</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Back-to-Top Button -->
+  <button type="button" class="back-to-top-btn" aria-label="Scroll back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Core Scripts -->
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/forms.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/gallery.js') }}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

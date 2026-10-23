@@ -1,0 +1,90 @@
+{% extends 'admin/base.html' %}
+
+{% block page_title %}Manage News & Announcements{% endblock %}
+
+{% block content %}
+<div style="display:grid;grid-template-columns:1.5fr 1fr;gap:30px;align-items:start;">
+  <!-- News Table -->
+  <div class="admin-card">
+    <div class="admin-card-header">
+      <h2>Published Articles ({{ articles|length }})</h2>
+    </div>
+    <div class="admin-table-container">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for a in articles %}
+          <tr>
+            <td>
+              <div style="font-weight:700;color:var(--primary-dark);">{{ a.title }}</div>
+              <div style="font-size:0.75rem;color:var(--text-light);">{{ a.summary[:80] }}...</div>
+            </td>
+            <td>
+              <span class="status-badge badge-new">{{ a.category }}</span>
+            </td>
+            <td style="font-size:0.8rem;color:var(--text-light);">{{ a.published_date }}</td>
+            <td>
+              <form method="POST" action="{{ url_for('admin.delete_news', id=a.id) }}" class="form-delete-confirm" data-item-title="{{ a.title }}">
+                <button type="submit" class="btn" style="background:#FCE8E6;color:#C5221F;padding:4px 8px;font-size:0.75rem;border-radius:var(--radius-sm);" title="Delete">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Add News Form -->
+  <div class="admin-card" style="padding:24px;">
+    <h3 style="font-size:1.2rem;font-weight:800;color:var(--primary-dark);margin-bottom:18px;">
+      <i class="fas fa-plus-circle" style="color:var(--primary-green);"></i> Publish New Article
+    </h3>
+    <form method="POST" action="{{ url_for('admin.add_news') }}">
+      <div class="form-group">
+        <label class="form-label required">Article Title</label>
+        <input type="text" name="title" class="form-control" placeholder="e.g. Science Exhibition Results" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label required">Category</label>
+        <select name="category" class="form-control" required>
+          <option value="Notice">Notice</option>
+          <option value="Academic">Academic</option>
+          <option value="Achievements">Achievements</option>
+          <option value="Sports">Sports</option>
+          <option value="Celebration">Celebration</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label required">Brief Summary</label>
+        <textarea name="summary" rows="2" class="form-control" placeholder="Short preview text for homepage cards" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label required">Full Content</label>
+        <textarea name="content" rows="4" class="form-control" placeholder="Complete announcement details" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Banner Image URL</label>
+        <input type="text" name="image_url" class="form-control" value="/static/images/hero/hero_classroom.jpg">
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width:100%;padding:10px;font-size:0.92rem;">
+        Publish Announcement
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Photo Gallery | {{ school_name }}{% endblock %}
+
+{% block content %}
+<!-- Page Banner -->
+<div class="page-banner">
+  <div class="container">
+    <div>
+      <h1 class="page-banner-title">Campus Life & Gallery</h1>
+      <p class="page-banner-subtitle">Glimpses of vibrant school life, student triumphs, cultural galas, and campus memories.</p>
+    </div>
+    <div class="breadcrumb">
+      <a href="{{ url_for('main.index') }}">Home</a>
+      <span>/</span>
+      <span>Gallery</span>
+    </div>
+  </div>
+</div>
+
+<section style="padding: 70px 0; background: var(--cream);">
+  <div class="container">
+    <!-- Category Filter Tabs -->
+    <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:40px;flex-wrap:wrap;">
+      {% for cat in categories %}
+      <a href="{{ url_for('main.gallery', category=cat) }}" class="btn {% if selected_cat == cat %}btn-primary{% else %}btn-white{% endif %}" style="padding:8px 22px;font-size:0.88rem;border:1px solid var(--border-light);">
+        {{ cat }}
+      </a>
+      {% endfor %}
+    </div>
+
+    <!-- Gallery Grid -->
+    <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:24px;">
+      {% for item in items %}
+      <div class="gallery-card" style="background:var(--white);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid var(--border-light);cursor:pointer;position:relative;transition:var(--transition);">
+        <div style="height:250px;overflow:hidden;position:relative;">
+          <img src="{{ item.image_url }}" alt="{{ item.title }}" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;">
+          <div style="position:absolute;top:12px;right:12px;background:rgba(0, 59, 45, 0.85);color:var(--gold);font-weight:700;font-size:0.75rem;padding:3px 10px;border-radius:var(--radius-full);">
+            {{ item.category }}
+          </div>
+          <div style="position:absolute;bottom:0;left:0;width:100%;background:linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);padding:20px 16px 12px;color:#fff;">
+            <h4 class="gallery-card-title" style="font-size:1.05rem;font-weight:700;margin-bottom:4px;">{{ item.title }}</h4>
+            <p class="gallery-card-caption" style="font-size:0.8rem;color:#D0DDD6;">{{ item.caption or 'Sanskar Public School campus activity.' }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% if items|length == 0 %}
+    <div style="text-align:center;padding:60px 20px;background:var(--white);border-radius:var(--radius-md);">
+      <i class="far fa-images" style="font-size:3rem;color:var(--text-light);margin-bottom:12px;"></i>
+      <h3 style="color:var(--primary-dark);font-size:1.2rem;">No photographs in this category yet.</h3>
+      <a href="{{ url_for('main.gallery', category='All') }}" class="btn btn-outline" style="margin-top:16px;">View All Photos</a>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends 'admin/base.html' %}
+
+{% block page_title %}Faculty Directory Management{% endblock %}
+
+{% block content %}
+<div style="display:grid;grid-template-columns:1.5fr 1fr;gap:30px;align-items:start;">
+  <div class="admin-card">
+    <div class="admin-card-header">
+      <h2>Registered Faculty ({{ faculty_list|length }})</h2>
+    </div>
+    <div class="admin-table-container">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Name & Qualifications</th>
+            <th>Department</th>
+            <th>Designation</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for f in faculty_list %}
+          <tr>
+            <td>
+              <div style="font-weight:700;color:var(--primary-dark);">{{ f.name }}</div>
+              <div style="font-size:0.75rem;color:var(--text-light);">{{ f.qualifications }}</div>
+            </td>
+            <td>
+              <span class="status-badge badge-review">{{ f.department }}</span>
+            </td>
+            <td style="font-size:0.85rem;color:var(--text-muted);">{{ f.designation }}</td>
+            <td>
+              <form method="POST" action="{{ url_for('admin.delete_faculty', id=f.id) }}" class="form-delete-confirm" data-item-title="{{ f.name }}">
+                <button type="submit" class="btn" style="background:#FCE8E6;color:#C5221F;padding:4px 8px;font-size:0.75rem;border-radius:var(--radius-sm);" title="Delete">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="admin-card" style="padding:24px;">
+    <h3 style="font-size:1.2rem;font-weight:800;color:var(--primary-dark);margin-bottom:18px;">
+      <i class="fas fa-user-plus" style="color:var(--primary-green);"></i> Add Faculty Profile
+    </h3>
+    <form method="POST" action="{{ url_for('admin.add_faculty') }}">
+      <div class="form-group">
+        <label class="form-label required">Full Name</label>
+        <input type="text" name="name" class="form-control" placeholder="e.g. Mrs. Ritu Malhotra" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label required">Department</label>
+        <select name="department" class="form-control" required>
+          <option value="Leadership">Leadership</option>
+          <option value="Science">Science</option>
+          <option value="Mathematics">Mathematics</option>
+          <option value="Languages">Languages</option>
+          <option value="Arts & Sports">Arts & Sports</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label required">Designation / Subject</label>
+        <input type="text" name="designation" class="form-control" placeholder="e.g. Senior Biology Faculty" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label required">Qualifications</label>
+        <input type="text" name="qualifications" class="form-control" placeholder="e.g. M.Sc. Botany, B.Ed." required>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Teaching Experience</label>
+          <input type="text" name="experience" class="form-control" placeholder="e.g. 10+ Years">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" name="email" class="form-control" placeholder="e.g. ritu.m@sanskar.in">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Profile Image URL</label>
+        <input type="text" name="image_url" class="form-control" value="/static/images/faculty/principal.jpg">
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width:100%;padding:10px;font-size:0.92rem;">
+        Add Educator Profile
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

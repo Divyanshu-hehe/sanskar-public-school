@@ -1,0 +1,120 @@
+{% extends 'admin/base.html' %}
+
+{% block page_title %}Website Settings & Contact Configuration{% endblock %}
+
+{% block content %}
+<div class="admin-card" style="padding:32px;max-width:920px;">
+  <form method="POST" action="{{ url_for('admin.settings') }}">
+    <h3 style="font-size:1.25rem;font-weight:800;color:var(--primary-dark);margin-bottom:20px;border-bottom:2px solid var(--border-light);padding-bottom:8px;">
+      1. Institutional Identity & Motto
+    </h3>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label required">Official School Name</label>
+        <input type="text" name="school_name" value="{{ settings.get('school_name', '') }}" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label required">Sanskrit Motto</label>
+        <input type="text" name="school_motto" value="{{ settings.get('school_motto', '') }}" class="form-control" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label required">Primary School Tagline</label>
+      <input type="text" name="school_tagline" value="{{ settings.get('school_tagline', '') }}" class="form-control" required>
+    </div>
+
+    <h3 style="font-size:1.25rem;font-weight:800;color:var(--primary-dark);margin:32px 0 20px;border-bottom:2px solid var(--border-light);padding-bottom:8px;">
+      2. Contact Channels & Campus Office
+    </h3>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label required">Primary Telephone Number</label>
+        <input type="text" name="school_phone" value="{{ settings.get('school_phone', '') }}" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Admissions Alternate Helpline</label>
+        <input type="text" name="school_alt_phone" value="{{ settings.get('school_alt_phone', '') }}" class="form-control">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label required">Primary Inquiries Email</label>
+        <input type="email" name="school_email" value="{{ settings.get('school_email', '') }}" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Admissions Desk Email</label>
+        <input type="email" name="admissions_email" value="{{ settings.get('admissions_email', '') }}" class="form-control">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label required">Campus Physical Address</label>
+      <input type="text" name="school_address" value="{{ settings.get('school_address', '') }}" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Office Working Hours</label>
+      <input type="text" name="office_hours" value="{{ settings.get('office_hours', '') }}" class="form-control">
+    </div>
+
+    <h3 style="font-size:1.25rem;font-weight:800;color:var(--primary-dark);margin:32px 0 20px;border-bottom:2px solid var(--border-light);padding-bottom:8px;">
+      3. Statistics Cards & Notice Banner
+    </h3>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Total Happy Students Metric</label>
+        <input type="text" name="stat_students" value="{{ settings.get('stat_students', '1000+') }}" class="form-control">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Dedicated Faculty Metric</label>
+        <input type="text" name="stat_faculty" value="{{ settings.get('stat_faculty', '50+') }}" class="form-control">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Years of Excellence</label>
+        <input type="text" name="stat_excellence" value="{{ settings.get('stat_excellence', '25+') }}" class="form-control">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Focus on Values Metric</label>
+        <input type="text" name="stat_values" value="{{ settings.get('stat_values', '100%') }}" class="form-control">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Top Scrolling Announcement Ticker</label>
+      <textarea name="ticker_announcement" rows="2" class="form-control">{{ settings.get('ticker_announcement', '') }}</textarea>
+    </div>
+
+    <h3 style="font-size:1.25rem;font-weight:800;color:var(--primary-dark);margin:32px 0 20px;border-bottom:2px solid var(--border-light);padding-bottom:8px;">
+      4. Admissions State & Google Map
+    </h3>
+
+    <div class="form-group">
+      <label class="form-label">Admissions Currently Active?</label>
+      <select name="admissions_open" class="form-control">
+        <option value="true" {% if settings.get('admissions_open') == 'true' %}selected{% endif %}>Yes - Admissions Open</option>
+        <option value="false" {% if settings.get('admissions_open') == 'false' %}selected{% endif %}>No - Admissions Closed for Session</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Google Maps Embed URL</label>
+      <textarea name="map_embed_url" rows="2" class="form-control">{{ settings.get('map_embed_url', '') }}</textarea>
+    </div>
+
+    <div style="margin-top:32px;">
+      <button type="submit" class="btn btn-gold" style="padding:14px 36px;font-size:1rem;">
+        <i class="fas fa-save"></i>
+        <span>Save All Settings</span>
+      </button>
+    </div>
+  </form>
+</div>
+{% endblock %}

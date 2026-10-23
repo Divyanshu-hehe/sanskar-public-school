@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block title %}News & School Events | {{ school_name }}{% endblock %}
+
+{% block content %}
+<!-- Page Banner -->
+<div class="page-banner">
+  <div class="container">
+    <div>
+      <h1 class="page-banner-title">News, Notices & Upcoming Events</h1>
+      <p class="page-banner-subtitle">Stay up-to-date with academic announcements, event dates and student accolades.</p>
+    </div>
+    <div class="breadcrumb">
+      <a href="{{ url_for('main.index') }}">Home</a>
+      <span>/</span>
+      <span>News & Events</span>
+    </div>
+  </div>
+</div>
+
+<section style="padding: 70px 0; background: var(--cream);">
+  <div class="container">
+    <!-- Search & Filter Bar -->
+    <div style="background:var(--white);padding:20px 24px;border-radius:var(--radius-md);box-shadow:var(--shadow-sm);border:1px solid var(--border-light);margin-bottom:40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        {% for cat in ['All', 'Academic', 'Achievements', 'Notice', 'Sports', 'Celebration'] %}
+        <a href="{{ url_for('main.news', category=cat, search=search_query) }}" class="btn {% if selected_cat == cat %}btn-primary{% else %}btn-white{% endif %}" style="padding:6px 16px;font-size:0.82rem;border:1px solid var(--border-light);">
+          {{ cat }}
+        </a>
+        {% endfor %}
+      </div>
+
+      <form method="GET" action="{{ url_for('main.news') }}" style="display:flex;gap:8px;">
+        <input type="hidden" name="category" value="{{ selected_cat }}">
+        <input type="text" name="search" value="{{ search_query }}" placeholder="Search announcements..." class="form-control" style="padding:8px 14px;font-size:0.88rem;width:220px;">
+        <button type="submit" class="btn btn-primary" style="padding:8px 14px;font-size:0.88rem;"><i class="fas fa-search"></i></button>
+      </form>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:start;">
+      <!-- News Articles List -->
+      <div>
+        <h3 style="font-size:1.4rem;font-weight:800;color:var(--primary-dark);margin-bottom:24px;">Latest Announcements</h3>
+
+        {% for article in articles %}
+        <div style="background:var(--white);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid var(--border-light);margin-bottom:24px;display:flex;transition:var(--transition);" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+          <div style="width:200px;flex-shrink:0;">
+            <img src="{{ article.image_url or url_for('static', filename='images/hero/hero_classroom.jpg') }}" alt="{{ article.title }}" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="padding:22px;display:flex;flex-direction:column;flex:1;">
+            <span style="font-size:0.75rem;font-weight:700;color:var(--primary-green);background:var(--primary-surface);padding:2px 10px;border-radius:var(--radius-full);align-self:flex-start;margin-bottom:10px;">
+              {{ article.category }}
+            </span>
+            <h4 style="font-size:1.15rem;font-weight:800;color:var(--primary-dark);margin-bottom:8px;line-height:1.35;">
+              <a href="{{ url_for('main.news_detail', slug=article.slug) }}">{{ article.title }}</a>
+            </h4>
+            <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;margin-bottom:14px;">
+              {{ article.summary }}
+            </p>
+            <div style="margin-top:auto;display:flex;align-items:center;justify-content:space-between;font-size:0.8rem;color:var(--text-light);">
+              <span><i class="far fa-calendar-alt"></i> {{ article.published_date }}</span>
+              <a href="{{ url_for('main.news_detail', slug=article.slug) }}" style="color:var(--primary-green);font-weight:700;">Read More &rarr;</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+        {% if articles|length == 0 %}
+        <div style="background:var(--white);padding:40px;text-align:center;border-radius:var(--radius-md);">
+          <p style="color:var(--text-muted);">No news found matching your query.</p>
+        </div>
+        {% endif %}
+
+        <!-- Pagination -->
+        {% if pagination.pages > 1 %}
+        <div style="display:flex;justify-content:center;gap:8px;margin-top:30px;">
+          {% for p in range(1, pagination.pages + 1) %}
+          <a href="{{ url_for('main.news', page=p, category=selected_cat, search=search_query) }}" class="btn {% if p == pagination.page %}btn-primary{% else %}btn-white{% endif %}" style="padding:6px 14px;border:1px solid var(--border-light);">
+            {{ p }}
+          </a>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- Upcoming Events Calendar Column -->
+      <div id="events" style="background:var(--white);padding:30px;border-radius:var(--radius-md);box-shadow:var(--shadow-sm);border:1px solid var(--border-light);">
+        <h3 style="font-size:1.35rem;font-weight:800;color:var(--primary-dark);margin-bottom:20px;border-bottom:2px solid var(--border-light);padding-bottom:10px;">
+          <i class="fas fa-calendar-day" style="color:var(--gold);margin-right:8px;"></i> School Events Calendar
+        </h3>
+
+        {% for ev in events %}
+        <div style="padding:16px 0;border-bottom:1px solid #EDF2EF;">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:8px;">
+            <div style="background:var(--primary-green);color:var(--white);padding:6px 12px;border-radius:var(--radius-sm);text-align:center;min-width:62px;">
+              <div style="font-size:1.15rem;font-weight:800;line-height:1;">{{ ev.event_date.split(' ')[0] if ev.event_date else '15' }}</div>
+              <div style="font-size:0.7rem;font-weight:700;color:var(--gold);text-transform:uppercase;">{{ ev.event_date.split(' ')[1] if ev.event_date else 'Nov' }}</div>
+            </div>
+            <div>
+              <h4 style="font-size:1rem;font-weight:700;color:var(--primary-dark);margin-bottom:4px;">{{ ev.title }}</h4>
+              <span style="font-size:0.75rem;background:var(--gold-light);color:#8F6B00;font-weight:700;padding:2px 8px;border-radius:var(--radius-full);">{{ ev.category }}</span>
+            </div>
+          </div>
+          <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:8px;line-height:1.5;">{{ ev.description }}</p>
+          <div style="font-size:0.78rem;color:var(--text-light);display:flex;gap:14px;">
+            <span><i class="far fa-clock"></i> {{ ev.event_time or '09:00 AM' }}</span>
+            <span><i class="fas fa-map-marker-alt"></i> {{ ev.location }}</span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

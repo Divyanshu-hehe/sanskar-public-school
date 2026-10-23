@@ -1,0 +1,71 @@
+{% extends 'admin/base.html' %}
+
+{% block page_title %}Contact Inquiries ({{ inquiries|length }}){% endblock %}
+
+{% block content %}
+<div class="admin-card">
+  <div class="admin-filters-bar">
+    <div class="filter-pills">
+      {% for st in ['All', 'New', 'In Progress', 'Resolved'] %}
+      <a href="{{ url_for('admin.inquiries', status=st) }}" class="filter-pill {% if current_status == st %}active{% endif %}">
+        {{ st }}
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="admin-table-container">
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>From</th>
+          <th>Subject</th>
+          <th>Message</th>
+          <th>Date</th>
+          <th>Status & Admin Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for inq in inquiries %}
+        <tr>
+          <td>
+            <div style="font-weight:700;color:var(--primary-dark);">{{ inq.name }}</div>
+            <div style="font-size:0.8rem;color:var(--text-muted);"><i class="fas fa-envelope"></i> {{ inq.email }}</div>
+            {% if inq.phone %}
+            <div style="font-size:0.8rem;color:var(--text-muted);"><i class="fas fa-phone-alt"></i> {{ inq.phone }}</div>
+            {% endif %}
+          </td>
+          <td>
+            <span style="font-weight:700;color:var(--primary-dark);">{{ inq.subject }}</span>
+          </td>
+          <td style="max-width:300px;font-size:0.88rem;color:var(--text-muted);line-height:1.5;">
+            {{ inq.message }}
+          </td>
+          <td style="font-size:0.8rem;color:var(--text-light);">
+            {{ inq.created_at.strftime('%d %b %Y, %H:%M') if inq.created_at else '' }}
+          </td>
+          <td style="min-width:200px;">
+            <form method="POST" action="{{ url_for('admin.update_inquiry', id=inq.id) }}" style="display:flex;flex-direction:column;gap:6px;">
+              <select name="status" class="form-control" style="padding:4px 8px;font-size:0.8rem;" onchange="this.form.submit()">
+                <option value="New" {% if inq.status == 'New' %}selected{% endif %}>New</option>
+                <option value="In Progress" {% if inq.status == 'In Progress' %}selected{% endif %}>In Progress</option>
+                <option value="Resolved" {% if inq.status == 'Resolved' %}selected{% endif %}>Resolved</option>
+              </select>
+              <input type="text" name="admin_notes" value="{{ inq.admin_notes or '' }}" placeholder="Resolution note..." class="form-control" style="padding:4px 8px;font-size:0.75rem;" onblur="this.form.submit()">
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+
+        {% if inquiries|length == 0 %}
+        <tr>
+          <td colspan="5" style="text-align:center;padding:40px;color:var(--text-muted);">
+            No inquiries under this status category.
+          </td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

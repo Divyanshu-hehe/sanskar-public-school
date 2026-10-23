@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us | {{ school_name }}{% endblock %}
+
+{% block content %}
+<!-- Page Banner -->
+<div class="page-banner">
+  <div class="container">
+    <div>
+      <h1 class="page-banner-title">About Sanskar Public School</h1>
+      <p class="page-banner-subtitle">Nurturing Knowledge. Building Character. Shaping Tomorrow's Leaders.</p>
+    </div>
+    <div class="breadcrumb">
+      <a href="{{ url_for('main.index') }}">Home</a>
+      <span>/</span>
+      <span>About Us</span>
+    </div>
+  </div>
+</div>
+
+<!-- Introduction Section -->
+<section style="padding: 80px 0; background: var(--white);">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;">
+      <div>
+        <span class="section-tag"><i class="fas fa-landmark"></i> Our Heritage & Foundation</span>
+        <h2 class="section-title" style="text-align:left;">Rooted in Values, Aiming for Global Excellence</h2>
+        <p style="color:var(--text-muted);font-size:1.05rem;line-height:1.75;margin-bottom:20px;">
+          Established with the noble vision of blending timeless Indian moral values with cutting-edge 21st-century academic rigour, <strong>{{ school_name }}</strong> provides an inspiring learning environment where young minds blossom into thinkers, innovators, and compassionate human beings.
+        </p>
+        <p style="color:var(--text-muted);font-size:1.05rem;line-height:1.75;margin-bottom:28px;">
+          The school's guiding motto, <span style="color:var(--primary-green);font-weight:700;">"विद्या ददाति विनयम्"</span> (Knowledge imparts true humility), reflects our foundational belief that intellectual brilliance is truly fulfilled only when accompanied by moral integrity, empathy, and social responsibility.
+        </p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;">
+          <a href="{{ url_for('main.admissions') }}" class="btn btn-primary">Admissions Open</a>
+          <a href="{{ url_for('main.facilities') }}" class="btn btn-outline">Explore Campus</a>
+        </div>
+      </div>
+      <div>
+        <div style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);border:6px solid var(--cream);">
+          <img src="{{ url_for('static', filename='images/campus/campus_building.jpg') }}" alt="Sanskar Public School Campus">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Vision & Mission Cards -->
+<section style="padding: 80px 0; background: var(--cream);">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag"><i class="fas fa-bullseye"></i> Guiding Principles</span>
+      <h2 class="section-title">Our Vision, Mission & Core Values</h2>
+      <p class="section-desc">The enduring bedrock upon which all teaching, mentoring, and student life at Sanskar is nurtured.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:28px;">
+      <!-- Card 1: Vision -->
+      <div style="background:var(--white);padding:36px 28px;border-radius:var(--radius-md);box-shadow:var(--shadow-sm);border:1px solid var(--border-light);position:relative;">
+        <div style="width:54px;height:54px;border-radius:14px;background:var(--primary-surface);color:var(--primary-green);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:20px;">
+          <i class="fas fa-eye"></i>
+        </div>
+        <h3 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:800;color:var(--primary-dark);margin-bottom:12px;">Our Vision</h3>
+        <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.7;">
+          To be an institution of benchmark excellence that nurtures intellectually curious, ethically grounded, and emotionally resilient global citizens equipped to contribute purposefully to society.
+        </p>
+      </div>
+
+      <!-- Card 2: Mission -->
+      <div style="background:var(--white);padding:36px 28px;border-radius:var(--radius-md);box-shadow:var(--shadow-sm);border:1px solid var(--border-light);position:relative;">
+        <div style="width:54px;height:54px;border-radius:14px;background:var(--gold-light);color:#B38600;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:20px;">
+          <i class="fas fa-rocket"></i>
+        </div>
+        <h3 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:800;color:var(--primary-dark);margin-bottom:12px;">Our Mission</h3>
+        <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.7;">
+          To cultivate critical thinking, scientific temper, and creative expression through experiential pedagogy, supportive mentorship, and state-of-the-art technological resources.
+        </p>
+      </div>
+
+      <!-- Card 3: Values -->
+      <div style="background:var(--white);padding:36px 28px;border-radius:var(--radius-md);box-shadow:var(--shadow-sm);border:1px solid var(--border-light);position:relative;">
+        <div style="width:54px;height:54px;border-radius:14px;background:#FDE8EA;color:var(--red-accent);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:20px;">
+          <i class="fas fa-heart"></i>
+        </div>
+        <h3 style="font-family:var(--font-heading);font-size:1.4rem;font-weight:800;color:var(--primary-dark);margin-bottom:12px;">Core Values</h3>
+        <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.7;">
+          <strong>Satya (Truth)</strong>, <strong>Shresthata (Excellence)</strong>, <strong>Vinamrata (Humility)</strong>, and <strong>Sahayata (Compassion)</strong> guide our student body, faculty, and administrative ethics.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Principal's Message Section -->
+<section style="padding: 80px 0; background: var(--white);">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1.35fr;gap:50px;align-items:center;">
+      <div>
+        <div style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);border:6px solid var(--cream);">
+          <img src="{{ url_for('static', filename='images/faculty/principal.jpg') }}" alt="Principal Dr. Arvind Sharma">
+        </div>
+        <div style="text-align:center;margin-top:16px;">
+          <h4 style="font-size:1.25rem;font-weight:800;color:var(--primary-dark);">Dr. Arvind Sharma</h4>
+          <span style="font-size:0.88rem;color:var(--primary-green);font-weight:600;">Principal & Academic Director</span>
+          <div style="font-size:0.8rem;color:var(--text-muted);">Ph.D., M.Sc. Physics, B.Ed.</div>
+        </div>
+      </div>
+
+      <div>
+        <span class="section-tag"><i class="fas fa-quote-left"></i> Words From Leadership</span>
+        <h2 class="section-title" style="text-align:left;">Principal's Welcome Address</h2>
+        <blockquote style="font-size:1.05rem;line-height:1.8;color:var(--text-muted);margin-bottom:20px;border-left:4px solid var(--gold);padding-left:20px;font-style:italic;">
+          "Education is not merely the acquisition of facts, but the training of the mind to think and the heart to care. At Sanskar Public School, we see each child as an extraordinary universe of possibilities. Our duty is not to mold them into uniform copies, but to ignite the unique flame within them."
+        </blockquote>
+        <p style="color:var(--text-muted);line-height:1.75;margin-bottom:20px;">
+          As we navigate an era shaped by rapid technological leaps, our educational framework anchors our learners in timeless integrity, emotional balance, and environmental stewardship.
+        </p>
+        <p style="color:var(--text-muted);line-height:1.75;margin-bottom:28px;">
+          We extend a hearty invitation to parents and guardians to partner with us in this fulfilling journey of shaping enlightened minds and grounded leaders.
+        </p>
+        <div style="display:flex;align-items:center;gap:14px;">
+          <div style="font-family:'Cinzel', serif;font-weight:700;color:var(--primary-dark);font-size:1.1rem;">
+            Dr. Arvind Sharma
+          </div>
+          <span style="color:#A0B0A8;">|</span>
+          <span style="font-size:0.85rem;color:var(--text-muted);">Office of the Principal</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Timeline of Excellence -->
+<section style="padding: 80px 0; background: var(--cream);">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag"><i class="fas fa-history"></i> Milestones</span>
+      <h2 class="section-title">Our Journey of Excellence</h2>
+      <p class="section-desc">Key milestones that mark the growth and development of Sanskar Public School.</p>
+    </div>
+
+    <div style="max-width:850px;margin:0 auto;position:relative;padding:20px 0;">
+      <div style="display:flex;flex-direction:column;gap:30px;">
+        <div style="display:flex;gap:24px;align-items:flex-start;">
+          <div style="background:var(--primary-green);color:var(--white);padding:10px 18px;border-radius:var(--radius-sm);font-weight:800;font-size:1.1rem;min-width:90px;text-align:center;">
+            2001
+          </div>
+          <div style="background:var(--white);padding:20px 24px;border-radius:var(--radius-md);box-shadow:var(--shadow-sm);flex:1;border:1px solid var(--border-light);">
+            <h4 style="font-size:1.15rem;font-weight:700;color:var(--primary-dark);margin-bottom:6px;">Foundation of Sanskar</h4>
+            <p style="color:var(--text-muted);font-size:0.92rem;">Inaugurated with 120 students and 8 dedicated educators with a focus on value-driven primary education.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:24px;align-items:flex-start;">
+          <div style="background:var(--gold);color:var(--primary-dark);padding:10px 18px;border-radius:var(--radius-sm);font-weight:800;font-size:1.1rem;min-width:90px;text-align:center;">
+            2009
+          </div>
+          <div style="background:var(--white);padding:20px 24px;border-radius:var(--radius-md);box-shadow:var(--shadow-sm);flex:1;border:1px solid var(--border-light);">
+            <h4 style="font-size:1.15rem;font-weight:700;color:var(--primary-dark);margin-bottom:6px;">CBSE Affiliation & Senior Secondary Wing</h4>
+            <p style="color:var(--text-muted);font-size:0.92rem;">Accredited for Senior Secondary certification in Science, Commerce, and Humanities with brand new laboratory wings.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:24px;align-items:flex-start;">
+          <div style="background:var(--primary-green);color:var(--white);padding:10px 18px;border-radius:var(--radius-sm);font-weight:800;font-size:1.1rem;min-width:90px;text-align:center;">
+            2018
+          </div>
+          <div style="background:var(--white);padding:20px 24px;border-radius:var(--radius-md);box-shadow:var(--shadow-sm);flex:1;border:1px solid var(--border-light);">
+            <h4 style="font-size:1.15rem;font-weight:700;color:var(--primary-dark);margin-bottom:6px;">STEM Robotics Lab & Sports Complex</h4>
+            <p style="color:var(--text-muted);font-size:0.92rem;">Addition of international-standard athletic tracks, computer robotics center, and digital smart interactive boards.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:24px;align-items:flex-start;">
+          <div style="background:var(--gold);color:var(--primary-dark);padding:10px 18px;border-radius:var(--radius-sm);font-weight:800;font-size:1.1rem;min-width:90px;text-align:center;">
+            Present
+          </div>
+          <div style="background:var(--white);padding:20px 24px;border-radius:var(--radius-md);box-shadow:var(--shadow-sm);flex:1;border:1px solid var(--border-light);">
+            <h4 style="font-size:1.15rem;font-weight:700;color:var(--primary-dark);margin-bottom:6px;">Over 1000+ Enrolled Learners</h4>
+            <p style="color:var(--text-muted);font-size:0.92rem;">Ranked among the premier holistic educational institutions with 100% board examination results and national olympiad accolades.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

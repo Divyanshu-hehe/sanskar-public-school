@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block title %}Parent Resources & Portal | {{ school_name }}{% endblock %}
+
+{% block content %}
+<!-- Page Banner -->
+<div class="page-banner">
+  <div class="container">
+    <div>
+      <h1 class="page-banner-title">Parent Resources & Downloads</h1>
+      <p class="page-banner-subtitle">Circulars, Academic Calendars, Downloadable Forms & Parent Communication</p>
+    </div>
+    <div class="breadcrumb">
+      <a href="{{ url_for('main.index') }}">Home</a>
+      <span>/</span>
+      <span>Parent Resources</span>
+    </div>
+  </div>
+</div>
+
+<section style="padding: 70px 0; background: var(--cream);">
+  <div class="container">
+    <!-- Parent Portal Notice Card -->
+    <div id="portal" style="background:linear-gradient(135deg, var(--primary-dark) 0%, #002B21 100%);color:var(--white);padding:36px;border-radius:var(--radius-lg);margin-bottom:50px;box-shadow:var(--shadow-md);border-left:6px solid var(--gold);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;">
+      <div style="max-width:680px;">
+        <span style="background:var(--gold);color:var(--primary-dark);font-weight:800;font-size:0.75rem;padding:3px 12px;border-radius:var(--radius-full);text-transform:uppercase;">
+          <i class="fas fa-lock"></i> Parent ERP Portal
+        </span>
+        <h3 style="font-size:1.6rem;font-weight:800;margin:12px 0 8px;color:var(--white);">Sanskar Parent Connect App</h3>
+        <p style="color:#D3DFDA;font-size:0.95rem;line-height:1.65;">
+          Monitor real-time student attendance, daily homework dairy, quarterly marks cards, and fee receipts through our secure mobile ERP. Credentials are provided at the time of admission enrollment.
+        </p>
+      </div>
+      <div>
+        <a href="tel:{{ school_phone }}" class="btn btn-gold" style="font-size:0.92rem;padding:12px 24px;">
+          <i class="fas fa-key"></i> Request ERP Credentials
+        </a>
+      </div>
+    </div>
+
+    <!-- Downloadable Forms & Resources Grid -->
+    <div id="downloads" style="margin-bottom:60px;">
+      <div class="section-header">
+        <span class="section-tag"><i class="fas fa-file-download"></i> Essential Documents</span>
+        <h2 class="section-title">Downloadable Forms & Circulars</h2>
+        <p class="section-desc">Download school approved documents, guidelines, and application forms in PDF format.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:24px;">
+        {% for res in resources %}
+        <div style="background:var(--white);border-radius:var(--radius-md);padding:24px;border:1px solid var(--border-light);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+            <span style="font-size:0.75rem;font-weight:700;color:var(--primary-green);background:var(--primary-surface);padding:3px 10px;border-radius:var(--radius-full);">
+              {{ res.category }}
+            </span>
+            <span style="font-size:0.75rem;color:var(--text-light);"><i class="fas fa-file-pdf" style="color:var(--red-accent);"></i> {{ res.file_size }}</span>
+          </div>
+          <h4 style="font-size:1.1rem;font-weight:700;color:var(--primary-dark);margin-bottom:8px;line-height:1.35;">{{ res.title }}</h4>
+          <p style="font-size:0.86rem;color:var(--text-muted);line-height:1.6;margin-bottom:18px;flex:1;">
+            {{ res.description or 'Official institutional document approved by Sanskar Public School administration.' }}
+          </p>
+          <div style="border-top:1px solid var(--border-light);padding-top:14px;display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-size:0.75rem;color:var(--text-light);">Updated: {{ res.updated_at }}</span>
+            <a href="{{ res.file_url }}" class="btn btn-primary" style="padding:6px 14px;font-size:0.82rem;" download onclick="window.showToast('Document downloaded: ' + '{{ res.title }}', 'info'); return false;">
+              <i class="fas fa-download"></i> Download
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Fee Structure & Payment Policies Section -->
+    <div id="fees" style="background:var(--white);border-radius:var(--radius-lg);padding:40px;border:1px solid var(--border-light);box-shadow:var(--shadow-sm);margin-bottom:60px;">
+      <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:start;">
+        <div>
+          <span class="section-tag"><i class="fas fa-receipt"></i> Transparent Policies</span>
+          <h3 style="font-size:1.6rem;font-weight:800;color:var(--primary-dark);margin-bottom:14px;">Fee Structure & Guidelines (2026–27)</h3>
+          <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.75;margin-bottom:16px;">
+            At {{ school_name }}, fee schedules are structured in strict compliance with state regulatory education guidelines. Tuition fees cover academic instruction, laboratory access, library resources, sports coaching, and smart technology modules.
+          </p>
+          <ul style="display:flex;flex-direction:column;gap:10px;font-size:0.9rem;color:var(--text-dark);margin-bottom:20px;">
+            <li><i class="fas fa-check-circle" style="color:var(--primary-green);margin-right:8px;"></i> <strong>Quarterly Payments:</strong> Payable by the 10th of April, July, October, and January.</li>
+            <li><i class="fas fa-check-circle" style="color:var(--primary-green);margin-right:8px;"></i> <strong>Payment Modes:</strong> Direct online portal payment via UPI, NEFT, Net Banking or Demand Draft.</li>
+            <li><i class="fas fa-check-circle" style="color:var(--primary-green);margin-right:8px;"></i> <strong>Sibling Concession:</strong> 15% tuition concession for the younger sibling.</li>
+          </ul>
+        </div>
+        <div style="background:var(--cream);padding:24px;border-radius:var(--radius-md);border:1px solid var(--border-light);">
+          <h4 style="font-size:1.15rem;font-weight:700;color:var(--primary-dark);margin-bottom:12px;">Accounts & Fee Counter</h4>
+          <div style="font-size:0.9rem;color:var(--text-muted);line-height:1.6;margin-bottom:16px;">
+            <div><strong>Location:</strong> Ground Floor, Administration Block</div>
+            <div><strong>Timings:</strong> Mon – Sat: 8:30 AM to 2:00 PM</div>
+            <div><strong>Accounts Phone:</strong> {{ school_phone }}</div>
+            <div><strong>Direct Email:</strong> accounts@sanskarpublicschool.in</div>
+          </div>
+          <a href="#" class="btn btn-outline" style="width:100%;font-size:0.85rem;" onclick="window.showToast('Official Fee Schedule PDF downloaded.', 'info'); return false;">
+            <i class="fas fa-file-pdf"></i> Download Official Fee Chart (PDF)
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

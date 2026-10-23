@@ -1,0 +1,85 @@
+{% extends 'admin/base.html' %}
+
+{% block page_title %}Manage Campus Gallery{% endblock %}
+
+{% block content %}
+<div style="display:grid;grid-template-columns:1.5fr 1fr;gap:30px;align-items:start;">
+  <div class="admin-card">
+    <div class="admin-card-header">
+      <h2>Gallery Photographs ({{ items|length }})</h2>
+    </div>
+    <div class="admin-table-container">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Preview</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for g in items %}
+          <tr>
+            <td style="width:70px;">
+              <img src="{{ g.image_url }}" alt="{{ g.title }}" style="width:60px;height:45px;object-fit:cover;border-radius:4px;">
+            </td>
+            <td>
+              <div style="font-weight:700;color:var(--primary-dark);">{{ g.title }}</div>
+              <div style="font-size:0.75rem;color:var(--text-light);">{{ g.caption }}</div>
+            </td>
+            <td>
+              <span class="status-badge badge-new">{{ g.category }}</span>
+            </td>
+            <td>
+              <form method="POST" action="{{ url_for('admin.delete_gallery', id=g.id) }}" class="form-delete-confirm" data-item-title="{{ g.title }}">
+                <button type="submit" class="btn" style="background:#FCE8E6;color:#C5221F;padding:4px 8px;font-size:0.75rem;border-radius:var(--radius-sm);" title="Delete">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="admin-card" style="padding:24px;">
+    <h3 style="font-size:1.2rem;font-weight:800;color:var(--primary-dark);margin-bottom:18px;">
+      <i class="fas fa-camera" style="color:var(--gold);"></i> Add Photo to Gallery
+    </h3>
+    <form method="POST" action="{{ url_for('admin.add_gallery') }}">
+      <div class="form-group">
+        <label class="form-label required">Photo Title</label>
+        <input type="text" name="title" class="form-control" placeholder="e.g. Science Exhibition 2026" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label required">Category</label>
+        <select name="category" class="form-control" required>
+          <option value="Campus">Campus</option>
+          <option value="Academics">Academics</option>
+          <option value="Sports">Sports</option>
+          <option value="Cultural">Cultural</option>
+          <option value="Celebrations">Celebrations</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label required">Image URL or Static Path</label>
+        <input type="text" name="image_url" class="form-control" placeholder="/static/images/gallery/..." value="/static/images/gallery/cultural_event.jpg" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Caption / Description</label>
+        <input type="text" name="caption" class="form-control" placeholder="Short caption for lightbox">
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width:100%;padding:10px;font-size:0.92rem;">
+        Add Photo
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}
