@@ -91,7 +91,7 @@
             <div><strong>Location:</strong> Ground Floor, Administration Block</div>
             <div><strong>Timings:</strong> Mon – Sat: 8:30 AM to 2:00 PM</div>
             <div><strong>Accounts Phone:</strong> {{ school_phone }}</div>
-            <div><strong>Direct Email:</strong> accounts@sanskarpublicschool.in</div>
+            <div><strong>Direct Email:</strong> <a href="mailto:{{ school_email }}" style="color:var(--primary-green);">{{ school_email }}</a></div>
           </div>
           <a href="#" class="btn btn-outline" style="width:100%;font-size:0.85rem;" onclick="window.showToast('Official Fee Schedule PDF downloaded.', 'info'); return false;">
             <i class="fas fa-file-pdf"></i> Download Official Fee Chart (PDF)

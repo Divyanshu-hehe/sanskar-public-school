@@ -109,6 +109,25 @@
       <textarea name="map_embed_url" rows="2" class="form-control">{{ settings.get('map_embed_url', '') }}</textarea>
     </div>
 
+    <h3 style="font-size:1.25rem;font-weight:800;color:var(--primary-dark);margin:32px 0 20px;border-bottom:2px solid var(--border-light);padding-bottom:8px;">
+      5. Social Media Channels
+    </h3>
+
+    <div class="form-group">
+      <label class="form-label">Instagram Profile URL</label>
+      <input type="url" name="instagram_url" value="{{ settings.get('instagram_url', '') }}" class="form-control" placeholder="https://www.instagram.com/your-handle/">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">YouTube Channel URL</label>
+      <input type="url" name="youtube_url" value="{{ settings.get('youtube_url', '') }}" class="form-control" placeholder="https://www.youtube.com/@your-channel">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Facebook Page URL</label>
+      <input type="url" name="facebook_url" value="{{ settings.get('facebook_url', '') }}" class="form-control" placeholder="https://facebook.com/your-page">
+    </div>
+
     <div style="margin-top:32px;">
       <button type="submit" class="btn btn-gold" style="padding:14px 36px;font-size:1rem;">
         <i class="fas fa-save"></i>

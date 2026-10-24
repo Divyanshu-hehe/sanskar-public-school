@@ -119,3 +119,12 @@ def test_admin_login_and_dashboard_access(client):
     }, follow_redirects=True)
     assert login_res.status_code == 200
     assert b'Dashboard Overview' in login_res.data
+
+def test_contact_and_social_links(client):
+    res = client.get('/contact')
+    assert res.status_code == 200
+    html = res.data.decode('utf-8')
+    assert 'sanskarpublicskl2000@gmail.com' in html
+    assert '79790 48493' in html or '7979048493' in html
+    assert 'https://www.instagram.com/sanskarpublicskl1/?hl=en' in html
+    assert 'https://www.youtube.com/@SANSKARPublicschool-en1/shorts' in html

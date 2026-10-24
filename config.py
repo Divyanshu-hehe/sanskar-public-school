@@ -33,6 +33,6 @@ class Config:
     SCHOOL_NAME = "Sanskar Public School"
     SCHOOL_MOTTO = "विद्या ददाति विनयम्"
     SCHOOL_TAGLINE = "Nurturing Knowledge. Building Character."
-    SCHOOL_PHONE = "+91 98765 43210"
-    SCHOOL_EMAIL = "info@sanskarpublicschool.in"
+    SCHOOL_PHONE = "+91 79790 48493"
+    SCHOOL_EMAIL = "sanskarpublicskl2000@gmail.com"
     SCHOOL_ADDRESS = "Sanskar Knowledge Park, Sector 14, Education City"

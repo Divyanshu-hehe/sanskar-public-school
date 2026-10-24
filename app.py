@@ -53,8 +53,8 @@ def create_app(config_class=Config):
             'school_name': settings_dict.get('school_name', 'Sanskar Public School'),
             'school_motto': settings_dict.get('school_motto', 'विद्या ददाति विनयम्'),
             'school_tagline': settings_dict.get('school_tagline', 'Nurturing Knowledge. Building Character.'),
-            'school_phone': settings_dict.get('school_phone', '+91 98765 43210'),
-            'school_email': settings_dict.get('school_email', 'info@sanskarpublicschool.in'),
+            'school_phone': settings_dict.get('school_phone', '+91 79790 48493'),
+            'school_email': settings_dict.get('school_email', 'sanskarpublicskl2000@gmail.com'),
             'school_address': settings_dict.get('school_address', 'Sanskar Knowledge Park, Sector 14, Education City'),
             'admissions_open': settings_dict.get('admissions_open', 'true') == 'true'
         }
