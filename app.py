@@ -55,7 +55,7 @@ def create_app(config_class=Config):
             'school_tagline': settings_dict.get('school_tagline', 'Nurturing Knowledge. Building Character.'),
             'school_phone': settings_dict.get('school_phone', '+91 79790 48493'),
             'school_email': settings_dict.get('school_email', 'sanskarpublicskl2000@gmail.com'),
-            'school_address': settings_dict.get('school_address', 'Sanskar Knowledge Park, Sector 14, Education City'),
+            'school_address': settings_dict.get('school_address', 'MGW7+J27, Bongawar, Bharechnagar, Jharkhand 829117'),
             'admissions_open': settings_dict.get('admissions_open', 'true') == 'true'
         }
 

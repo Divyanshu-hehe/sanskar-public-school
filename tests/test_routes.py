@@ -128,3 +128,4 @@ def test_contact_and_social_links(client):
     assert '79790 48493' in html or '7979048493' in html
     assert 'https://www.instagram.com/sanskarpublicskl1/?hl=en' in html
     assert 'https://www.youtube.com/@SANSKARPublicschool-en1/shorts' in html
+    assert 'MGW7+J27, Bongawar, Bharechnagar, Jharkhand 829117' in html

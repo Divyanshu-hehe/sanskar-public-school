@@ -35,4 +35,4 @@ class Config:
     SCHOOL_TAGLINE = "Nurturing Knowledge. Building Character."
     SCHOOL_PHONE = "+91 79790 48493"
     SCHOOL_EMAIL = "sanskarpublicskl2000@gmail.com"
-    SCHOOL_ADDRESS = "Sanskar Knowledge Park, Sector 14, Education City"
+    SCHOOL_ADDRESS = "MGW7+J27, Bongawar, Bharechnagar, Jharkhand 829117"
