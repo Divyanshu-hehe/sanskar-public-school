@@ -13,7 +13,7 @@
       <div class="hero-content">
         <div class="hero-pill-badge">
           <i class="fas fa-award"></i>
-          <span>Admissions Open for Session {{ settings.get('academic_year', '2026 – 2027') }}</span>
+          <span>Admissions Open for Session {{ settings.get('academic_year', '2027 – 2028') }}</span>
         </div>
         <h1 class="hero-title">
           <span>Nurturing</span>
@@ -142,7 +142,7 @@
             <i class="fas fa-user-friends"></i>
           </div>
           <div>
-            <div class="stat-number">{{ settings.get('stat_students', '1000+') }}</div>
+            <div class="stat-number">{{ settings.get('stat_students', '500+') }}</div>
             <div class="stat-label">Happy Students</div>
           </div>
         </div>
@@ -162,7 +162,7 @@
             <i class="fas fa-trophy"></i>
           </div>
           <div>
-            <div class="stat-number">{{ settings.get('stat_excellence', '25+') }}</div>
+            <div class="stat-number">{{ settings.get('stat_excellence', '8+') }}</div>
             <div class="stat-label">Years of Excellence</div>
           </div>
         </div>
@@ -209,7 +209,7 @@
             <span class="academic-card-title">Pre-Primary</span>
           </div>
           <div class="academic-card-tagline">Play • Learn • Grow</div>
-          <div class="academic-card-grades">Nursery – UKG</div>
+          <div class="academic-card-grades">Play Group • Nursery • LKG • UKG</div>
           <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 14px;">
             Child-centric sensory learning, phonetics, and creative play in a nurturing kindergarten environment.
           </p>
@@ -264,10 +264,10 @@
         </div>
       </div>
 
-      <!-- 4. Senior Secondary -->
+      <!-- 4. Senior Secondary (Class 9-10) -->
       <div class="academic-program-card">
         <div class="academic-card-img">
-          <img src="{{ url_for('static', filename='images/academic/senior_secondary.jpg') }}" alt="Senior secondary STEM laboratory">
+          <img src="{{ url_for('static', filename='images/academic/senior_secondary.jpg') }}" alt="Secondary laboratory at Sanskar">
         </div>
         <div class="academic-card-body">
           <div class="academic-badge-level">
@@ -275,9 +275,9 @@
             <span class="academic-card-title">Senior Secondary</span>
           </div>
           <div class="academic-card-tagline">Preparing for Tomorrow</div>
-          <div class="academic-card-grades">Class 9 – 12</div>
+          <div class="academic-card-grades">Class 9 – 10</div>
           <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 14px;">
-            Specialized Science, Commerce, and Humanities streams with career counseling and competitive exam mentorship.
+            Rigorous academic foundation, conceptual mastery, laboratory practicals, and preparation for CBSE board examinations.
           </p>
           <a href="{{ url_for('main.academics') }}#senior" class="academic-card-link">
             <span>Learn More</span>
@@ -305,7 +305,7 @@
       </a>
     </div>
 
-    <div class="facilities-strip-grid">
+    <div class="facilities-strip-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
       <!-- 1. Classrooms -->
       <div class="facility-mini-card">
         <div class="facility-mini-img">
@@ -314,12 +314,12 @@
         <div class="facility-mini-title">Spacious Classrooms</div>
       </div>
 
-      <!-- 2. Science & Computer Labs -->
+      <!-- 2. Science Labs -->
       <div class="facility-mini-card">
         <div class="facility-mini-img">
           <img src="{{ url_for('static', filename='images/facilities/science_lab.jpg') }}" alt="Science & Computer Labs">
         </div>
-        <div class="facility-mini-title">Science & Computer Labs</div>
+        <div class="facility-mini-title">Science Laboratories</div>
       </div>
 
       <!-- 3. Library -->
@@ -341,17 +341,9 @@
       <!-- 5. Smart Learning -->
       <div class="facility-mini-card">
         <div class="facility-mini-img">
-          <img src="{{ url_for('static', filename='images/facilities/computer_lab.jpg') }}" alt="Smart Learning & Coding Lab">
+          <img src="{{ url_for('static', filename='images/facilities/computer_lab.jpg') }}" alt="Smart Learning & Computer Lab">
         </div>
-        <div class="facility-mini-title">Smart Learning</div>
-      </div>
-
-      <!-- 6. Safe Campus -->
-      <div class="facility-mini-card">
-        <div class="facility-mini-img">
-          <img src="{{ url_for('static', filename='images/campus/campus_building.jpg') }}" alt="Safe & Secure Campus">
-        </div>
-        <div class="facility-mini-title">Safe & Secure Campus</div>
+        <div class="facility-mini-title">Computer & Smart Lab</div>
       </div>
     </div>
   </div>

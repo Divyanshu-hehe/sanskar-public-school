@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
-{% block title %}Admissions Open {{ settings.get('academic_year', '2026 – 2027') }} | {{ school_name }}{% endblock %}
+{% block title %}Admissions Open {{ settings.get('academic_year', '2027 – 2028') }} | {{ school_name }}{% endblock %}
 
 {% block content %}
 <!-- Page Banner -->
 <div class="page-banner">
   <div class="container">
     <div>
-      <h1 class="page-banner-title">Admissions Open (Session {{ settings.get('academic_year', '2026 – 2027') }})</h1>
+      <h1 class="page-banner-title">Admissions Open (Session {{ settings.get('academic_year', '2027 – 2028') }})</h1>
       <p class="page-banner-subtitle">Begin your child's transformative educational journey at Sanskar Public School.</p>
     </div>
     <div class="breadcrumb">
@@ -61,7 +61,7 @@
           4
         </div>
         <h4 style="font-size:1.15rem;font-weight:700;color:var(--primary-dark);margin-bottom:8px;">Fee Payment & Welcome</h4>
-        <p style="font-size:0.88rem;color:var(--text-muted);">Admission confirmation upon fee deposit, followed by student orientation and allotment of house.</p>
+        <p style="font-size:0.88rem;color:var(--text-muted);">Admission confirmation upon fee deposit, followed by student orientation and class section allotment.</p>
       </div>
     </div>
 
@@ -83,8 +83,8 @@
             </thead>
             <tbody>
               <tr style="border-bottom:1px solid #EDF2EF;">
-                <td style="padding:12px 20px;font-weight:600;">Nursery</td>
-                <td style="padding:12px 20px;">3+ Years</td>
+                <td style="padding:12px 20px;font-weight:600;">Play Group / Nursery</td>
+                <td style="padding:12px 20px;">2.5+ / 3+ Years</td>
                 <td style="padding:12px 20px;color:var(--text-muted);">None required</td>
               </tr>
               <tr style="border-bottom:1px solid #EDF2EF;">
@@ -103,9 +103,9 @@
                 <td style="padding:12px 20px;color:var(--text-muted);">Report card of previous class</td>
               </tr>
               <tr>
-                <td style="padding:12px 20px;font-weight:600;">Class 9 to 11</td>
+                <td style="padding:12px 20px;font-weight:600;">Class 9 & 10</td>
                 <td style="padding:12px 20px;">Age proportional</td>
-                <td style="padding:12px 20px;color:var(--text-muted);">Transfer Certificate & Board results</td>
+                <td style="padding:12px 20px;color:var(--text-muted);">Transfer Certificate & report card</td>
               </tr>
             </tbody>
           </table>
@@ -174,9 +174,10 @@
             <label class="form-label required" for="grade_applying">Grade / Class Applying For</label>
             <select id="grade_applying" name="grade_applying" class="form-control" required>
               <option value="">Select Class</option>
-              <option value="Pre-Primary (Nursery)">Pre-Primary (Nursery)</option>
-              <option value="Pre-Primary (LKG)">Pre-Primary (LKG)</option>
-              <option value="Pre-Primary (UKG)">Pre-Primary (UKG)</option>
+              <option value="Play Group">Play Group</option>
+              <option value="Nursery">Nursery</option>
+              <option value="LKG">LKG</option>
+              <option value="UKG">UKG</option>
               <option value="Class 1">Class 1</option>
               <option value="Class 2">Class 2</option>
               <option value="Class 3">Class 3</option>
@@ -187,10 +188,6 @@
               <option value="Class 8">Class 8</option>
               <option value="Class 9">Class 9</option>
               <option value="Class 10">Class 10</option>
-              <option value="Class 11 (Science)">Class 11 (Science)</option>
-              <option value="Class 11 (Commerce)">Class 11 (Commerce)</option>
-              <option value="Class 11 (Humanities)">Class 11 (Humanities)</option>
-              <option value="Class 12">Class 12</option>
             </select>
           </div>
         </div>

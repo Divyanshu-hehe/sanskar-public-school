@@ -31,19 +31,19 @@ def seed_database(app):
             ('school_email', 'sanskarpublicskl2000@gmail.com', 'Primary Contact Email'),
             ('admissions_email', 'sanskarpublicskl2000@gmail.com', 'Admissions Desk Email'),
             ('school_address', 'MGW7+J27, Bongawar, Bharechnagar, Jharkhand 829117', 'Campus Address'),
-            ('office_hours', 'Monday – Saturday: 8:00 AM – 3:30 PM (Closed on Second Saturdays & Sundays)', 'Office Working Hours'),
+            ('office_hours', 'Monday – Saturday: 8:00 AM – 5:00 PM (Closed only on Sundays)', 'Office Working Hours'),
             ('affiliation_info', 'Affiliated with Central Board of Secondary Education (CBSE, New Delhi)', 'Board Affiliation'),
             ('admissions_open', 'true', 'Admissions Status (true/false)'),
-            ('academic_year', '2026 – 2027', 'Current Academic Year'),
-            ('stat_students', '1000+', 'Total Enrolled Students Metric'),
+            ('academic_year', '2027 – 2028', 'Current Academic Year'),
+            ('stat_students', '500+', 'Total Enrolled Students Metric'),
             ('stat_faculty', '50+', 'Dedicated Faculty Members'),
-            ('stat_excellence', '25+', 'Years of Educational Excellence'),
+            ('stat_excellence', '8+', 'Years of Educational Excellence'),
             ('stat_values', '100%', 'Focus on Values and Character'),
             ('facebook_url', 'https://facebook.com/sanskarpublicschool', 'Facebook Page URL'),
             ('instagram_url', 'https://www.instagram.com/sanskarpublicskl1/?hl=en', 'Instagram Page URL'),
             ('youtube_url', 'https://www.youtube.com/@SANSKARPublicschool-en1/shorts', 'YouTube Channel URL'),
             ('map_embed_url', 'https://maps.google.com/maps?q=MGW7%2BJ27%2C+Bongawar%2C+Bharechnagar%2C+Jharkhand+829117&output=embed', 'Google Maps Embed Iframe URL'),
-            ('ticker_announcement', 'Admissions open for Academic Session 2026-27 from Nursery to Grade XI. Download prospectus online or visit school front desk.', 'Top Notice Ticker Text')
+            ('ticker_announcement', 'Admissions open for Academic Session 2027-28 from Play Group & Nursery to Class 10. Download prospectus online or visit school front desk.', 'Top Notice Ticker Text')
         ]
 
         for key, val, desc in settings:
@@ -81,7 +81,7 @@ def seed_database(app):
                     department="Science",
                     qualifications="M.Sc. Physics (IIT Roorkee), B.Ed.",
                     experience="15+ Years Experience",
-                    bio="Mentoring young scientific minds in competitive exams, robotics, and hands-on lab experiments.",
+                    bio="Mentoring young scientific minds in competitive exams, physics concepts, and hands-on lab experiments.",
                     email="rajesh.m@sanskarpublicschool.in",
                     image_url="/static/images/faculty/principal.jpg",
                     display_order=3
@@ -126,44 +126,44 @@ def seed_database(app):
         if NewsArticle.query.count() == 0:
             news_items = [
                 NewsArticle(
-                    title="Sanskar Public School Bags Top Honors at Inter-School STEM Olympiad",
-                    slug="stem-olympiad-victory-2026",
+                    title="Sanskar Public School Bags Top Honors at Inter-School Science Olympiad",
+                    slug="science-olympiad-victory-2027",
                     category="Achievements",
-                    summary="Our middle and senior school robotics innovators clinched the first position at the National Science Innovation League.",
-                    content="Students from Sanskar Public School showcased phenomenal creativity and technical finesse at the National Science Innovation League held this week. The four-member team designed an autonomous solar-powered water filtration prototype, earning high praise from eminent scientists and evaluators.",
-                    image_url="/static/images/facilities/stem_lab.jpg",
+                    summary="Our middle and secondary school innovators clinched the first position at the National Science Innovation League.",
+                    content="Students from Sanskar Public School showcased phenomenal creativity and technical finesse at the National Science Innovation League. The four-member team designed an eco-friendly solar water filtration prototype, earning high praise from eminent scientists and evaluators.",
+                    image_url="/static/images/facilities/science_lab.jpg",
                     is_published=True,
-                    published_date="18 Oct 2026"
+                    published_date="18 Oct 2027"
                 ),
                 NewsArticle(
-                    title="Admissions Open for Academic Session 2026–2027",
-                    slug="admissions-announcement-2026-27",
+                    title="Admissions Open for Academic Session 2027–2028",
+                    slug="admissions-announcement-2027-28",
                     category="Notice",
-                    summary="Registration for nursery to class XI is now underway. Parents can submit admission inquiries online or visit campus.",
-                    content="Sanskar Public School is delighted to announce that admission applications for the upcoming academic session 2026–27 are officially open. With our state-of-the-art smart classrooms, world-class labs, and compassionate faculty, we welcome new learners to join our vibrant family.",
+                    summary="Registration for Play Group, Nursery to Class 10 is now underway. Parents can submit admission inquiries online or visit campus.",
+                    content="Sanskar Public School is delighted to announce that admission applications for the upcoming academic session 2027–28 are officially open. With our state-of-the-art smart classrooms, world-class labs, and compassionate faculty, we welcome new learners to join our vibrant family.",
                     image_url="/static/images/hero/hero_classroom.jpg",
                     is_published=True,
-                    published_date="10 Oct 2026"
+                    published_date="10 Oct 2027"
                 ),
                 NewsArticle(
-                    title="Annual Cultural Extravaganza 'Vasantotsav 2026' Concludes with Grandeur",
-                    slug="annual-day-cultural-fest-2026",
+                    title="Annual Cultural Extravaganza 'Vasantotsav' Concludes with Grandeur",
+                    slug="annual-day-cultural-fest-2027",
                     category="Celebration",
                     summary="A dazzling showcase of classical dance, theatrical drama, and musical orchestras enthralled over 1500 parents and guests.",
-                    content="The annual school day 'Vasantotsav 2026' was celebrated with immense enthusiasm and artistic splendor in the school auditorium. Students presented captivating cultural dance performances representing India's rich heritage, followed by a theatrical production on environmental stewardship.",
+                    content="The annual school day 'Vasantotsav' was celebrated with immense enthusiasm and artistic splendor in the school auditorium. Students presented captivating cultural dance performances representing India's rich heritage, followed by a theatrical production on environmental stewardship.",
                     image_url="/static/images/gallery/cultural_event.jpg",
                     is_published=True,
-                    published_date="28 Sep 2026"
+                    published_date="28 Sep 2027"
                 ),
                 NewsArticle(
                     title="District Inter-School Athletic Meet: Sanskar Athletes Clinch 14 Medals",
-                    slug="inter-school-athletic-meet-2026",
+                    slug="inter-school-athletic-meet-2027",
                     category="Sports",
                     summary="Our sprint relay teams and high-jump champions brought home 8 gold, 4 silver, and 2 bronze medals.",
                     content="Sanskar sports stars triumphed across multiple track and field events in the District Inter-School Athletic Championship. Principal Dr. Arvind Sharma congratulated the physical education department and student athletes for their discipline and exemplary team spirit.",
                     image_url="/static/images/facilities/sports.jpg",
                     is_published=True,
-                    published_date="15 Sep 2026"
+                    published_date="15 Sep 2027"
                 )
             ]
             db.session.add_all(news_items)
@@ -172,10 +172,10 @@ def seed_database(app):
         if SchoolEvent.query.count() == 0:
             events = [
                 SchoolEvent(
-                    title="Annual Science & Innovation Exhibition 2026",
+                    title="Annual Science & Innovation Exhibition 2027",
                     category="Academics",
-                    description="Hands-on demonstration of scientific models, working robotics projects, eco-friendly energy prototypes, and digital experiments.",
-                    event_date="05 Nov 2026",
+                    description="Hands-on demonstration of scientific models, working physics and chemistry projects, eco-friendly energy prototypes, and digital experiments.",
+                    event_date="05 Nov 2027",
                     event_time="09:30 AM – 03:00 PM",
                     location="School Science Center & Quadrangle",
                     image_url="/static/images/facilities/science_lab.jpg",
@@ -185,17 +185,17 @@ def seed_database(app):
                     title="Parent-Teacher Interaction Meeting (Term I Review)",
                     category="Parent-Teacher",
                     description="Comprehensive one-on-one progress review between parents and subject educators to discuss student holistic development.",
-                    event_date="14 Nov 2026",
+                    event_date="14 Nov 2027",
                     event_time="08:30 AM – 01:30 PM",
                     location="Respective Homerooms",
                     image_url="/static/images/campus/campus_building.jpg",
                     is_featured=True
                 ),
                 SchoolEvent(
-                    title="Inter-House Football & Basketball Tournament",
+                    title="Inter-Class Football & Athletic Tournament",
                     category="Sports",
-                    description="Exciting annual sports championship where the four school houses compete for the prestigious Rolling Sports Trophy.",
-                    event_date="22 Nov 2026",
+                    description="Exciting annual sports championship where classes compete for the prestigious Annual Sports Rolling Trophy.",
+                    event_date="22 Nov 2027",
                     event_time="08:00 AM – 02:00 PM",
                     location="Main Athletic Complex",
                     image_url="/static/images/facilities/sports.jpg",
@@ -204,8 +204,8 @@ def seed_database(app):
                 SchoolEvent(
                     title="National Mathematics Day Symposium & Quiz",
                     category="Academics",
-                    description="Celebrating Srinivasa Ramanujan's legacy through inter-school math puzzles, speed calculations, and analytical challenges.",
-                    event_date="22 Dec 2026",
+                    description="Celebrating Srinivasa Ramanujan's legacy through inter-class math puzzles, speed calculations, and analytical challenges.",
+                    event_date="22 Dec 2027",
                     event_time="10:00 AM – 01:00 PM",
                     location="School Auditorium",
                     image_url="/static/images/facilities/library.jpg",
@@ -274,10 +274,10 @@ def seed_database(app):
                     display_order=8
                 ),
                 GalleryItem(
-                    title="STEM Innovation & Robotics Lab Workshop",
+                    title="Science & Computer Laboratory Workshop",
                     category="Academics",
                     image_url="/static/images/facilities/stem_lab.jpg",
-                    caption="Secondary school innovators assembling robotic prototypes and automated circuitry.",
+                    caption="Secondary school students engaging in conceptual experiments and interactive computer learning.",
                     display_order=9
                 )
             ]
@@ -288,7 +288,7 @@ def seed_database(app):
             faqs = [
                 FAQ(
                     category="Admissions",
-                    question="What is the admission procedure for the 2026-27 academic session?",
+                    question="What is the admission procedure for the 2027-28 academic session?",
                     answer="Admissions begin with submitting an online inquiry or application form through this portal. Once received, the admissions office will contact you to schedule an interaction session and campus walkthrough. Following document verification, admission confirmation is granted.",
                     display_order=1
                 ),
@@ -311,15 +311,15 @@ def seed_database(app):
                     display_order=4
                 ),
                 FAQ(
-                    category="Transport",
-                    question="Does the school offer GPS-enabled bus transportation?",
-                    answer="Yes, the school operates a well-managed fleet of air-conditioned and standard school buses covering all major residential corridors in the city. Every bus features GPS tracking, CCTV surveillance, first-aid kits, and trained female attendants.",
+                    category="Facilities",
+                    question="What are the daily campus hours for administrative visits?",
+                    answer="The school front desk and administrative offices are open Monday through Saturday from 8:00 AM to 5:00 PM, and remain closed only on Sundays.",
                     display_order=5
                 ),
                 FAQ(
                     category="Facilities",
-                    question="What safety and medical measures are maintained on campus?",
-                    answer="The campus is monitored 24/7 by CCTV security and trained guards. We house a fully equipped infirmary staffed by a qualified full-time nurse and an on-call pediatrician for emergencies.",
+                    question="What medical and first-aid measures are maintained on campus?",
+                    answer="The campus houses a fully equipped first-aid infirmary staffed by a qualified full-time nurse and an on-call doctor for emergencies.",
                     display_order=6
                 )
             ]
@@ -329,14 +329,14 @@ def seed_database(app):
         if DownloadableResource.query.count() == 0:
             resources = [
                 DownloadableResource(
-                    title="Admission Registration Form & Instructions (2026-27)",
+                    title="Admission Registration Form & Instructions (2027-28)",
                     category="Forms",
                     description="Official printable registration form with detailed guidelines for offline submission.",
                     file_url="#",
                     file_size="PDF (320 KB)"
                 ),
                 DownloadableResource(
-                    title="Annual Academic Calendar (Session 2026-27)",
+                    title="Annual Academic Calendar (Session 2027-28)",
                     category="Calendar",
                     description="Comprehensive breakdown of term dates, examination schedules, gazetted holidays, and events.",
                     file_url="#",
@@ -345,21 +345,21 @@ def seed_database(app):
                 DownloadableResource(
                     title="School Uniform & Dress Code Guidelines",
                     category="Guidelines",
-                    description="Detailed specifications for summer and winter uniforms, house sportswear, and footwear.",
+                    description="Detailed specifications for summer and winter uniforms, physical education sportswear, and footwear.",
                     file_url="#",
                     file_size="PDF (180 KB)"
                 ),
                 DownloadableResource(
-                    title="Curriculum Overview & Syllabus Breakdown (Grades I to XII)",
+                    title="Curriculum Overview & Syllabus Breakdown (Grades Play Group to X)",
                     category="Syllabus",
                     description="Subject-wise syllabus, recommended reading lists, and internal assessment criteria.",
                     file_url="#",
                     file_size="PDF (850 KB)"
                 ),
                 DownloadableResource(
-                    title="Fee Structure & Payment Schedule (2026-27)",
+                    title="Fee Structure & Payment Schedule (2027-28)",
                     category="Fees",
-                    description="Transparent itemized breakdown of tuition fees, activity charges, and transport slabs.",
+                    description="Transparent itemized breakdown of tuition fees and activity charges.",
                     file_url="#",
                     file_size="PDF (240 KB)"
                 ),
@@ -390,7 +390,7 @@ def seed_database(app):
                     previous_school="Delhi Public International",
                     previous_grade="Class 2",
                     previous_percentage="94%",
-                    additional_notes="Interested in school chess club and athletics.",
+                    additional_notes="Interested in athletics, drawing, and chess.",
                     status="Under Review",
                     admin_remarks="Documents verified. Scheduled for parent interaction on Nov 3."
                 ),

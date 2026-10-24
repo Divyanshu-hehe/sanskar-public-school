@@ -129,3 +129,37 @@ def test_contact_and_social_links(client):
     assert 'https://www.instagram.com/sanskarpublicskl1/?hl=en' in html
     assert 'https://www.youtube.com/@SANSKARPublicschool-en1/shorts' in html
     assert 'MGW7+J27, Bongawar, Bharechnagar, Jharkhand 829117' in html
+
+def test_updated_requirements(client):
+    # Check index page for academic year, 500+ students, and Pre-Primary grades
+    res_index = client.get('/')
+    assert res_index.status_code == 200
+    html_index = res_index.data.decode('utf-8')
+    assert '2027 – 2028' in html_index or '2027-28' in html_index
+    assert '500+' in html_index
+    assert 'Play Group • Nursery • LKG • UKG' in html_index
+    assert 'Class 9 – 10' in html_index
+
+    # Check admissions page for Play Group, Nursery, LKG, UKG, Class 1-10
+    res_adm = client.get('/admissions')
+    assert res_adm.status_code == 200
+    html_adm = res_adm.data.decode('utf-8')
+    assert 'Play Group' in html_adm
+    assert 'Class 10' in html_adm
+    assert 'Class 11 (Science)' not in html_adm
+
+    # Check student life: no Four Pillars of School Spirit, no Robotics
+    res_life = client.get('/student-life')
+    assert res_life.status_code == 200
+    html_life = res_life.data.decode('utf-8')
+    assert 'Four Pillars of School Spirit' not in html_life
+    assert 'Robotics' not in html_life
+    assert 'Clubs & Co-Curricular Societies' not in html_life
+
+    # Check journey in about page: 2018 foundation, 500+ enrolled
+    res_about = client.get('/about')
+    assert res_about.status_code == 200
+    html_about = res_about.data.decode('utf-8')
+    assert '2018' in html_about
+    assert 'Foundation of Sanskar' in html_about
+    assert '500+' in html_about

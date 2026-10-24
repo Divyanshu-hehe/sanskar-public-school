@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Beyond Classrooms: Student Life | {{ school_name }}{% endblock %}
+{% block title %}Student Life & Co-Curricular Activities | {{ school_name }}{% endblock %}
 
 {% block content %}
 <!-- Page Banner -->
@@ -8,7 +8,7 @@
   <div class="container">
     <div>
       <h1 class="page-banner-title">Student Life & Co-Curriculars</h1>
-      <p class="page-banner-subtitle">Fostering Leadership, Artistic Expression, Athletic Grit & Lifelong Friendships</p>
+      <p class="page-banner-subtitle">Nurturing Character, Physical Fitness, Artistic Expression & Lifelong Discipline</p>
     </div>
     <div class="breadcrumb">
       <a href="{{ url_for('main.index') }}">Home</a>
@@ -18,128 +18,113 @@
   </div>
 </div>
 
-<!-- House System Section -->
+<!-- Sports & Physical Fitness Section -->
 <section class="page-section" style="background: var(--white);">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag"><i class="fas fa-flag"></i> House System</span>
-      <h2 class="section-title">The Four Pillars of School Spirit</h2>
-      <p class="section-desc">Instilling healthy camaraderie, leadership traits, and loyalty through friendly inter-house rivalry.</p>
+      <span class="section-tag"><i class="fas fa-running"></i> Sports & Wellness</span>
+      <h2 class="section-title">Physical Fitness & Athletic Development</h2>
+      <p class="section-desc">Instilling sportsmanship, physical endurance, tactical teamwork, and personal health habits.</p>
     </div>
 
-    <div class="responsive-grid-4">
-      <!-- House 1: Agni -->
-      <div style="background:var(--cream);border-radius:var(--radius-md);padding:28px 20px;border-top:5px solid var(--red-accent);text-align:center;box-shadow:var(--shadow-sm);">
-        <div style="width:50px;height:50px;border-radius:50%;background:#FDE8EA;color:var(--red-accent);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:1.3rem;">
-          <i class="fas fa-fire"></i>
+    <div class="responsive-grid-3">
+      <!-- 1. Track & Athletics -->
+      <div style="background:var(--cream);border-radius:var(--radius-md);padding:30px;border-top:4px solid var(--primary-green);box-shadow:var(--shadow-sm);">
+        <div style="width:50px;height:50px;border-radius:50%;background:var(--primary-surface);color:var(--primary-green);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:1.3rem;">
+          <i class="fas fa-medal"></i>
         </div>
-        <h4 style="font-size:1.25rem;font-weight:800;color:var(--primary-dark);margin-bottom:4px;">Agni House</h4>
-        <div style="font-size:0.8rem;color:var(--red-accent);font-weight:700;margin-bottom:12px;">COURAGE & ZEAL</div>
-        <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;">
-          Inspiring fearless pursuit of truth, leadership on the sports field, and passionate dedication to every challenge.
+        <h4 style="font-size:1.25rem;font-weight:800;color:var(--primary-dark);margin-bottom:8px;">Athletics & Track Sports</h4>
+        <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.65;">
+          Sprint relays, long jump, high jump, and obstacle training under the guidance of qualified physical instructors.
         </p>
       </div>
 
-      <!-- House 2: Vayu -->
-      <div style="background:var(--cream);border-radius:var(--radius-md);padding:28px 20px;border-top:5px solid #1967D2;text-align:center;box-shadow:var(--shadow-sm);">
-        <div style="width:50px;height:50px;border-radius:50%;background:#E8F0FE;color:#1967D2;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:1.3rem;">
-          <i class="fas fa-wind"></i>
+      <!-- 2. Team Sports -->
+      <div style="background:var(--cream);border-radius:var(--radius-md);padding:30px;border-top:4px solid var(--gold);box-shadow:var(--shadow-sm);">
+        <div style="width:50px;height:50px;border-radius:50%;background:var(--gold-light);color:#A37800;display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:1.3rem;">
+          <i class="fas fa-futbol"></i>
         </div>
-        <h4 style="font-size:1.25rem;font-weight:800;color:var(--primary-dark);margin-bottom:4px;">Vayu House</h4>
-        <div style="font-size:0.8rem;color:#1967D2;font-weight:700;margin-bottom:12px;">SPEED & AGILITY</div>
-        <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;">
-          Embodying intellectual nimbleness, debate rhetoric, and energetic participation across literary and athletic arenas.
+        <h4 style="font-size:1.25rem;font-weight:800;color:var(--primary-dark);margin-bottom:8px;">Football & Outdoor Games</h4>
+        <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.65;">
+          Spacious playground facilities for football, cricket nets, volleyball, and cooperative sports activities.
         </p>
       </div>
 
-      <!-- House 3: Prithvi -->
-      <div style="background:var(--cream);border-radius:var(--radius-md);padding:28px 20px;border-top:5px solid var(--primary-green);text-align:center;box-shadow:var(--shadow-sm);">
-        <div style="width:50px;height:50px;border-radius:50%;background:var(--primary-surface);color:var(--primary-green);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:1.3rem;">
-          <i class="fas fa-mountain"></i>
+      <!-- 3. Yoga & Morning Fitness -->
+      <div style="background:var(--cream);border-radius:var(--radius-md);padding:30px;border-top:4px solid #1967D2;box-shadow:var(--shadow-sm);">
+        <div style="width:50px;height:50px;border-radius:50%;background:#E8F0FE;color:#1967D2;display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:1.3rem;">
+          <i class="fas fa-spa"></i>
         </div>
-        <h4 style="font-size:1.25rem;font-weight:800;color:var(--primary-dark);margin-bottom:4px;">Prithvi House</h4>
-        <div style="font-size:0.8rem;color:var(--primary-green);font-weight:700;margin-bottom:12px;">RESILIENCE & SERVICE</div>
-        <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;">
-          Steadfast character, community welfare initiatives, environmental responsibility, and quiet determination to excel.
-        </p>
-      </div>
-
-      <!-- House 4: Jal -->
-      <div style="background:var(--cream);border-radius:var(--radius-md);padding:28px 20px;border-top:5px solid var(--gold);text-align:center;box-shadow:var(--shadow-sm);">
-        <div style="width:50px;height:50px;border-radius:50%;background:var(--gold-light);color:#A37800;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:1.3rem;">
-          <i class="fas fa-water"></i>
-        </div>
-        <h4 style="font-size:1.25rem;font-weight:800;color:var(--primary-dark);margin-bottom:4px;">Jal House</h4>
-        <div style="font-size:0.8rem;color:#A37800;font-weight:700;margin-bottom:12px;">PURITY & HARMONY</div>
-        <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;">
-          Fluid creativity, artistic brilliance, cultural choreography, and harmonious interpersonal unity.
+        <h4 style="font-size:1.25rem;font-weight:800;color:var(--primary-dark);margin-bottom:8px;">Yoga & Mindful Breathing</h4>
+        <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.65;">
+          Daily morning exercises, Suryanamaskar, posture alignment, and mindfulness sessions to enhance focus and mental calm.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Student Clubs & Societies -->
+<!-- Co-Curricular & Cultural Life -->
 <section class="page-section" style="background: var(--cream);">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag"><i class="fas fa-users"></i> Beyond The Bell</span>
-      <h2 class="section-title">Clubs & Co-Curricular Societies</h2>
-      <p class="section-desc">Over 15 student-led interest clubs encourage passion projects, innovation, and self-discovery.</p>
+      <span class="section-tag"><i class="fas fa-palette"></i> Arts & Culture</span>
+      <h2 class="section-title">Creative Expression & Cultural Activities</h2>
+      <p class="section-desc">Encouraging artistic discovery, public speaking confidence, and Indian cultural heritage.</p>
     </div>
 
     <div class="responsive-grid-3">
-      <!-- Club 1 -->
-      <div style="background:var(--white);padding:30px;border-radius:var(--radius-md);border:1px solid var(--border-light);box-shadow:var(--shadow-sm);">
-        <div style="font-size:1.8rem;color:var(--primary-green);margin-bottom:14px;"><i class="fas fa-robot"></i></div>
-        <h4 style="font-size:1.2rem;font-weight:800;color:var(--primary-dark);margin-bottom:8px;">Robotics & Innovation Club</h4>
-        <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.65;">
-          Hands-on micro-soldering, sensor automation, drone piloting, and preparation for national science olympiads.
-        </p>
-      </div>
-
-      <!-- Club 2 -->
-      <div style="background:var(--white);padding:30px;border-radius:var(--radius-md);border:1px solid var(--border-light);box-shadow:var(--shadow-sm);">
-        <div style="font-size:1.8rem;color:var(--gold);margin-bottom:14px;"><i class="fas fa-microphone-alt"></i></div>
-        <h4 style="font-size:1.2rem;font-weight:800;color:var(--primary-dark);margin-bottom:8px;">Debate & Literary Society</h4>
-        <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.65;">
-          Model United Nations (MUN), parliamentary debate rounds, creative writing workshops, and poetry slams.
-        </p>
-      </div>
-
-      <!-- Club 3 -->
+      <!-- Art & Craft -->
       <div style="background:var(--white);padding:30px;border-radius:var(--radius-md);border:1px solid var(--border-light);box-shadow:var(--shadow-sm);">
         <div style="font-size:1.8rem;color:var(--red-accent);margin-bottom:14px;"><i class="fas fa-palette"></i></div>
-        <h4 style="font-size:1.2rem;font-weight:800;color:var(--primary-dark);margin-bottom:8px;">Visual Arts & Pottery Guild</h4>
+        <h4 style="font-size:1.2rem;font-weight:800;color:var(--primary-dark);margin-bottom:8px;">Visual Arts & Craft</h4>
         <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.65;">
-          Oil canvas painting, clay sculpting, terracotta pottery wheels, and annual campus art galleries.
+          Watercolors, sketching, paper craft, poster making, and creative exhibitions that allow children's imaginations to flourish.
         </p>
       </div>
 
-      <!-- Club 4 -->
-      <div style="background:var(--white);padding:30px;border-radius:var(--radius-md);border:1px solid var(--border-light);box-shadow:var(--shadow-sm);">
-        <div style="font-size:1.8rem;color:#00796B;margin-bottom:14px;"><i class="fas fa-seedling"></i></div>
-        <h4 style="font-size:1.2rem;font-weight:800;color:var(--primary-dark);margin-bottom:8px;">Eco & Nature Warriors Club</h4>
-        <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.65;">
-          Organic kitchen gardening, solar power awareness audits, campus composting, and sapling plantation drives.
-        </p>
-      </div>
-
-      <!-- Club 5 -->
+      <!-- Music & Dance -->
       <div style="background:var(--white);padding:30px;border-radius:var(--radius-md);border:1px solid var(--border-light);box-shadow:var(--shadow-sm);">
         <div style="font-size:1.8rem;color:#E67E22;margin-bottom:14px;"><i class="fas fa-music"></i></div>
-        <h4 style="font-size:1.2rem;font-weight:800;color:var(--primary-dark);margin-bottom:8px;">Music & Performing Arts Ensemble</h4>
+        <h4 style="font-size:1.2rem;font-weight:800;color:var(--primary-dark);margin-bottom:8px;">Music & Performing Arts</h4>
         <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.65;">
-          Vocal classical training, acoustic guitar, keyboard, tabla, and classical Bharatnatyam and Kathak troupes.
+          Vocal classical prayers, patriotic melodies, harmonium, tabla, and traditional cultural dance performances.
         </p>
       </div>
 
-      <!-- Club 6 -->
+      <!-- Public Speaking & Debate -->
       <div style="background:var(--white);padding:30px;border-radius:var(--radius-md);border:1px solid var(--border-light);box-shadow:var(--shadow-sm);">
-        <div style="font-size:1.8rem;color:#1967D2;margin-bottom:14px;"><i class="fas fa-hands-helping"></i></div>
-        <h4 style="font-size:1.2rem;font-weight:800;color:var(--primary-dark);margin-bottom:8px;">Social Service & Interact Club</h4>
+        <div style="font-size:1.8rem;color:var(--gold);margin-bottom:14px;"><i class="fas fa-microphone-alt"></i></div>
+        <h4 style="font-size:1.2rem;font-weight:800;color:var(--primary-dark);margin-bottom:8px;">Elocution & Recitation</h4>
         <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.65;">
-          Blood donation awareness, peer literacy tutoring for underprivileged learners, and book donation drives.
+          Poetry recitation, speech competitions, Hindi and English debates, and storytelling sessions for confidence on stage.
+        </p>
+      </div>
+
+      <!-- Morning Assembly & Values -->
+      <div style="background:var(--white);padding:30px;border-radius:var(--radius-md);border:1px solid var(--border-light);box-shadow:var(--shadow-sm);">
+        <div style="font-size:1.8rem;color:var(--primary-green);margin-bottom:14px;"><i class="fas fa-sun"></i></div>
+        <h4 style="font-size:1.2rem;font-weight:800;color:var(--primary-dark);margin-bottom:8px;">Morning Assembly & Shlokas</h4>
+        <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.65;">
+          Daily morning gathering with national anthem, Sanskrit shlokas, moral stories, thought for the day, and news presentation.
+        </p>
+      </div>
+
+      <!-- Environmental Activities -->
+      <div style="background:var(--white);padding:30px;border-radius:var(--radius-md);border:1px solid var(--border-light);box-shadow:var(--shadow-sm);">
+        <div style="font-size:1.8rem;color:#00796B;margin-bottom:14px;"><i class="fas fa-seedling"></i></div>
+        <h4 style="font-size:1.2rem;font-weight:800;color:var(--primary-dark);margin-bottom:8px;">Eco-Awareness & Gardening</h4>
+        <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.65;">
+          Tree plantation drives, campus cleanliness routines, water conservation awareness, and botanical appreciation.
+        </p>
+      </div>
+
+      <!-- Celebrations & Annual Day -->
+      <div style="background:var(--white);padding:30px;border-radius:var(--radius-md);border:1px solid var(--border-light);box-shadow:var(--shadow-sm);">
+        <div style="font-size:1.8rem;color:#1967D2;margin-bottom:14px;"><i class="fas fa-calendar-alt"></i></div>
+        <h4 style="font-size:1.2rem;font-weight:800;color:var(--primary-dark);margin-bottom:8px;">National Days & Celebrations</h4>
+        <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.65;">
+          Joyous celebrations of Independence Day, Republic Day, Gandhi Jayanti, Saraswati Puja, and the Annual Day extravaganza.
         </p>
       </div>
     </div>
