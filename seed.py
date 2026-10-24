@@ -39,7 +39,6 @@ def seed_database(app):
             ('stat_faculty', '50+', 'Dedicated Faculty Members'),
             ('stat_excellence', '8+', 'Years of Educational Excellence'),
             ('stat_values', '100%', 'Focus on Values and Character'),
-            ('facebook_url', 'https://facebook.com/sanskarpublicschool', 'Facebook Page URL'),
             ('instagram_url', 'https://www.instagram.com/sanskarpublicskl1/?hl=en', 'Instagram Page URL'),
             ('youtube_url', 'https://www.youtube.com/@SANSKARPublicschool-en1/shorts', 'YouTube Channel URL'),
             ('map_embed_url', 'https://maps.google.com/maps?q=MGW7%2BJ27%2C+Bongawar%2C+Bharechnagar%2C+Jharkhand+829117&output=embed', 'Google Maps Embed Iframe URL'),

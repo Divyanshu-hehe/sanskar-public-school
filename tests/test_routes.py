@@ -129,6 +129,7 @@ def test_contact_and_social_links(client):
     assert 'https://www.instagram.com/sanskarpublicskl1/?hl=en' in html
     assert 'https://www.youtube.com/@SANSKARPublicschool-en1/shorts' in html
     assert 'MGW7+J27, Bongawar, Bharechnagar, Jharkhand 829117' in html
+    assert 'facebook' not in html.lower()
 
 def test_updated_requirements(client):
     # Check index page for academic year, 500+ students, and Pre-Primary grades
@@ -139,6 +140,7 @@ def test_updated_requirements(client):
     assert '500+' in html_index
     assert 'Play Group • Nursery • LKG • UKG' in html_index
     assert 'Class 9 – 10' in html_index
+    assert 'facebook' not in html_index.lower()
 
     # Check admissions page for Play Group, Nursery, LKG, UKG, Class 1-10
     res_adm = client.get('/admissions')
